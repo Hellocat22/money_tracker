@@ -45,3 +45,30 @@ document.getElementById("add-transaction").addEventListener("click", function() 
     document.getElementById("notes").value = "";
     document.getElementById("account").value = "";
 });
+
+// Tab switching logic
+document.querySelectorAll(".topbar ul li").forEach(tab => {
+    tab.addEventListener("click", function() {
+        // Remove 'active' class from all tabs
+        document.querySelectorAll(".topbar ul li").forEach(t => t.classList.remove("active"));
+        
+        // Add 'active' class to the clicked tab
+        this.classList.add("active");
+
+        // Hide all iframes
+        document.querySelectorAll("iframe").forEach(iframe => iframe.style.display = "none");
+
+        // Update the section title and show the relevant iframe
+        const sectionTitle = document.getElementById("section-title");
+        if (this.id === "dashboard-tab") {
+            sectionTitle.textContent = "Dashboard";
+            document.getElementById("dashboard-iframe").style.display = "block";
+        } else if (this.id === "transaction-tab") {
+            sectionTitle.textContent = "Transactions";
+            document.getElementById("transaction-iframe").style.display = "block";
+        } else if (this.id === "account-tab") {
+            sectionTitle.textContent = "Accounts";
+            document.getElementById("account-iframe").style.display = "block";
+        }
+    });
+});
