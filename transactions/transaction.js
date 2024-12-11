@@ -1,7 +1,25 @@
+function initialize() {
+    const transactionType = document.getElementById("transaction-type").value;
+    const expenseField = document.getElementById("expense-field");
+
+    if (transactionType === "expense") {
+        expenseField.style.display = "block";
+    }
+    else {
+        expenseField.style.display = "none";
+    }
+}
+
 // Show or hide expense-specific fields based on transaction type
 document.getElementById("transaction-type").addEventListener("change", function () {
-    const isExpense = this.value === "expense";
-    document.getElementById("expense-field").style.display = isExpense ? "block" : "none";
+    const isExpense = document.getElementById("expense-field");
+
+    if (this.value === "expense") {
+        expenseField.style.display = "block";
+    }
+    else {
+        expenseField.style.display = "none";
+    }
 });
 
 // Add a new transaction
@@ -49,3 +67,5 @@ function resetFields() {
     document.getElementById("category").value = "";
     document.getElementById("notes").value = "";
 }
+
+initialize();
