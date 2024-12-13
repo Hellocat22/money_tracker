@@ -23,7 +23,7 @@ function setActiveTab(selectedTab) {
 function updateSection(tabId) {
     const sectionTitle = document.getElementById("section-title");
     const pageMapping = {
-        "dashboard-tab": {title: "Dashboard", page: null},
+        "dashboard-tab": {title: "Dashboard", page: "index.html"},
         "transaction-tab": {title: "Transactions", page: "transaction.html"},
         "account-tab": {title: "Accounts", page: "account.html"}
     }
@@ -52,13 +52,22 @@ function initialize() {
 
 // Show or hide expense-specific fields based on transaction type
 document.getElementById("transaction-type").addEventListener("change", function () {
-    const isExpense = document.getElementById("expense-field");
+    const expenseField = document.getElementById("expense-field");
+    const incomeField = document.getElementById("income-field");
+    const transferField = document.getElementById("transfer-field");
+    
+    expenseField.style.display = "none";
+    incomeField.style.display = "none";
+    transferField.style.display = "none";
 
     if (this.value === "expense") {
         expenseField.style.display = "block";
     }
-    else {
-        expenseField.style.display = "none";
+    else if (this.value === "income") {
+        incomeField.style.display = "block";
+    }
+    else if (this.value === "transfer") {
+        transferField.style.display = "block";
     }
 });
 
@@ -76,10 +85,22 @@ document.getElementById("add-transaction").addEventListener("click", function ()
 
     // Add expense details if the transaction is an expense
     if (type === "expense") {
-        const account = document.getElementById("account").value;
-        const category = document.getElementById("category").value;
-        const notes = document.getElementById("notes").value;
+        const account = document.getElementById("expense-account").value;
+        const category = document.getElementById("expense-category").value;
+        const notes = document.getElementById("expense-notes").value;
         transactionDetails += ` | Account: ${account} | Category: ${category} | Notes: ${notes}`;
+    }
+    else if (type === "income") {
+        const account = document.getElementById("income-account").value;
+        const category = document.getElementById("income-category").value;
+        const notes = document.getElementById("income-notes").value;
+        transactionDetails += ` | Account: ${account} | Category: ${category} | Notes: ${notes}`;
+    }
+    else if (type === "transfer") {
+        const fromAccount = document.getElementById("transfer-fromAccount").value;
+        const toAccount = document.getElementById("transfer-toAccount").value;
+        const notes = document.getElementById("transfer-notes").value;
+        transactionDetails += ` | From: ${fromAccount} | To: ${toAccount} | Notes: ${notes}`;
     }
 
     // Add the transaction to the transaction list
@@ -100,12 +121,27 @@ function capitalize(str) {
 
 // Helper function to reset input fields to their default state
 function resetFields() {
+    const type = document.getElementById("transaction-type").value;
+
     document.getElementById("amount").value = "";
-    document.getElementById("transaction-type").value = "expense";
-    document.getElementById("expense-field").style.display = "block";
-    document.getElementById("account").value = "";
-    document.getElementById("category").value = "";
-    document.getElementById("notes").value = "";
+    if (type === "expense"){
+        document.getElementById("expense-field").style.display = "";
+        document.getElementById("expense-account").value = "";
+        document.getElementById("expense-category").value = "";
+        document.getElementById("expense-notes").value = "";
+    }
+    else if (type === "income") {
+        document.getElementById("income-field").style.display = "";
+        document.getElementById("income-account").value = "";
+        document.getElementById("income-category").value = "";
+        document.getElementById("income-notes").value = "";
+    }
+    else if (type === "transfer") {
+        document.getElementById("transfer-field").style.display = "";
+        document.getElementById("transfer-fromAccount").value = "";
+        document.getElementById("transfer-toAccount").value = "";
+        document.getElementById("transfer-notes").value = "";
+    }
 }
 
 initialize();

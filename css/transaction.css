@@ -42,13 +42,18 @@ body {
     color: white;
 }
 
+h2 {
+    padding: 10px 100px 10px 100px;
+}
+
 form {
     display: flex;
     flex-direction: column;
+    padding: 10px 100px 10px 100px;
 }
 
 form label {
-    margin-top: 10px;
+    margin: 0px 0px 10px 0px;
 }
 
 form input,
@@ -77,7 +82,7 @@ form button:hover {
 }
 
 .history {
-    margin-top: 20px;
+    padding: 10px 100px 10px 100px;
     text-align: left;
 }
 
@@ -87,23 +92,23 @@ form button:hover {
 }
 
 .history li {
-    margin: 5px 0;
+    margin: 10px 0;
     padding: 10px;
     background-color: #f9f9f9;
-    border-left: 5px solid rgb(50, 200, 50);
-    border-radius: 5px;
+    border-left: 10px solid rgb(50, 200, 50);
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
 }
 
 .history li.expense {
-    border-left: 5px solid #f44336;
+    border-left: 10px solid #f44336;
 }
 
 .history li.income {
-    border-left: 5px solid rgb(50, 200, 50);
+    border-left: 10px solid rgb(50, 200, 50);
 }
 
 .history li.transfer {
-    border-left: 5px solid #2196f3;
+    border-left: 10px solid #2196f3;
 }

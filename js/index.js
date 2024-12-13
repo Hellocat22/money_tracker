@@ -23,7 +23,7 @@ function setActiveTab(selectedTab) {
 function updateSection(tabId) {
     const sectionTitle = document.getElementById("section-title");
     const pageMapping = {
-        "dashboard-tab": {title: "Dashboard", page: null},
+        "dashboard-tab": {title: "Dashboard", page: "index.html"},
         "transaction-tab": {title: "Transactions", page: "transaction.html"},
         "account-tab": {title: "Accounts", page: "account.html"}
     }
