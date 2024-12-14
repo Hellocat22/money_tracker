@@ -1,4 +1,4 @@
-// Tab switching logic
+/*// Tab switching logic
 const tabs = document.querySelectorAll(".navbar li");
 for (let i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener("click", function() {
@@ -37,4 +37,4 @@ function updateSection(tabId) {
             sectionTitle.textContent = current.title;
         }
     }
-}
+}*/
