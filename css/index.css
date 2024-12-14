@@ -14,7 +14,7 @@ body {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.topbar ul {
+.topbar nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ body {
     justify-content: center;
 }
 
-.topbar li {
+.topbar nav {
     margin: 0 15px;
     padding: 10px 20px;
     cursor: pointer;
@@ -32,12 +32,12 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.topbar li:hover {
+.topbar nav:hover {
     background-color: #388e3c;
     color: white;
 }
 
-.topbar li.active {
+.topbar nav.active {
     background-color: #388e3c;
     color: white;
 }
