@@ -1,5 +1,5 @@
 // Tab switching logic
-const tabs = document.querySelectorAll(".topbar ul li");
+const tabs = document.querySelectorAll(".navbar li");
 for (let i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener("click", function() {
         // Update current tab
@@ -12,7 +12,7 @@ for (let i = 0; i < tabs.length; i++) {
 
 // Helper function to set the active tab
 function setActiveTab(selectedTab) {
-    document.querySelectorAll(".topbar ul li");
+    document.querySelectorAll(".navbar li");
     for (let i = 0; i < tabs.length; i++) {
         tabs[i].classList.remove("active");
     }
