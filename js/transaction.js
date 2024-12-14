@@ -32,7 +32,8 @@ function updateSection(tabId) {
     if (current) {
         if (current.page) {
             window.location.href = current.page;
-        } else {
+        }
+        else {
             sectionTitle.textContent = current.title;
         }
     }
@@ -80,7 +81,7 @@ document.getElementById("add-transaction").addEventListener("click", function ()
         alert("Please enter a valid amount!");
         return;
     }
-
+    
     let transactionDetails = `${capitalize(type)}: $${amount.toFixed(2)}`;
 
     // Add expense details if the transaction is an expense
@@ -88,25 +89,25 @@ document.getElementById("add-transaction").addEventListener("click", function ()
         const account = document.getElementById("expense-account").value;
         const category = document.getElementById("expense-category").value;
         const notes = document.getElementById("expense-notes").value;
-        transactionDetails += ` | Account: ${account} | Category: ${category} | Notes: ${notes}`;
+        transactionDetails += `<br>Account: ${account} | Category: ${category} | Notes: ${notes}`;
     }
     else if (type === "income") {
         const account = document.getElementById("income-account").value;
         const category = document.getElementById("income-category").value;
         const notes = document.getElementById("income-notes").value;
-        transactionDetails += ` | Account: ${account} | Category: ${category} | Notes: ${notes}`;
+        transactionDetails += `<br>Account: ${account} | Category: ${category} | Notes: ${notes}`;
     }
     else if (type === "transfer") {
         const fromAccount = document.getElementById("transfer-fromAccount").value;
         const toAccount = document.getElementById("transfer-toAccount").value;
         const notes = document.getElementById("transfer-notes").value;
-        transactionDetails += ` | From: ${fromAccount} | To: ${toAccount} | Notes: ${notes}`;
+        transactionDetails += `<br>From: ${fromAccount} | To: ${toAccount} | Notes: ${notes}`;
     }
 
     // Add the transaction to the transaction list
     const transactionList = document.getElementById("transaction-list");
     const newTransaction = document.createElement("li");
-    newTransaction.textContent = transactionDetails;
+    newTransaction.innerHTML = transactionDetails;
     newTransaction.classList.add(type);
     transactionList.appendChild(newTransaction);
 
