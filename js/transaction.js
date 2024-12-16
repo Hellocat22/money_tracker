@@ -72,6 +72,16 @@ document.getElementById("transaction-type").addEventListener("change", function 
     }
 });
 
+let totalIncome = 0;
+let totalExpense = 0;
+
+function updateTotal() {
+    document.getElementById("total-income").textContent = `Total Income so far: $${totalIncome.toFixed(2)}`;
+    document.getElementById("total-expense").textContent = `Total Expense so far: $${totalExpense.toFixed(2)}`;
+    let netBalance = totalIncome - totalExpense;
+    document.getElementById("net-balance").textContent = `Net Balance: $${netBalance.toFixed(2)}`;
+}
+
 // Add a new transaction
 document.getElementById("add-transaction").addEventListener("click", function () {
     const type = document.getElementById("transaction-type").value;
@@ -90,12 +100,14 @@ document.getElementById("add-transaction").addEventListener("click", function ()
         const category = document.getElementById("expense-category").value;
         const notes = document.getElementById("expense-notes").value;
         transactionDetails += `<br>Account: ${account} | Category: ${category} | Notes: ${notes}`;
+        totalExpense += amount;
     }
     else if (type === "income") {
         const account = document.getElementById("income-account").value;
         const category = document.getElementById("income-category").value;
         const notes = document.getElementById("income-notes").value;
         transactionDetails += `<br>Account: ${account} | Category: ${category} | Notes: ${notes}`;
+        totalIncome += amount;
     }
     else if (type === "transfer") {
         const fromAccount = document.getElementById("transfer-fromAccount").value;
@@ -110,6 +122,8 @@ document.getElementById("add-transaction").addEventListener("click", function ()
     newTransaction.innerHTML = transactionDetails;
     newTransaction.classList.add(type);
     transactionList.appendChild(newTransaction);
+
+    updateTotal()
 
     // Reset input fields
     resetFields();
@@ -146,3 +160,4 @@ function resetFields() {
 }
 
 initialize();
+updateTotal();
