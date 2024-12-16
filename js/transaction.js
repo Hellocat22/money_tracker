@@ -39,15 +39,31 @@ function updateSection(tabId) {
     }
 }*/
 
+window.onload = function() {
+    // Initialize the page state
+    initialize();
+    loadTransactionHistory();
+    updateTotal();
+};
+
 function initialize() {
     const transactionType = document.getElementById("transaction-type").value;
     const expenseField = document.getElementById("expense-field");
+    const incomeField = document.getElementById("income-field");
+    const transferField = document.getElementById("transfer-field");
+
+    expenseField.style.display = "none";
+    incomeField.style.display = "none";
+    transferField.style.display = "none";
 
     if (transactionType === "expense") {
         expenseField.style.display = "block";
     }
-    else {
-        expenseField.style.display = "none";
+    else if (transactionType === "income") {
+        incomeField.style.display = "block";
+    }
+    else if (transactionType === "transfer") {
+        transferField.style.display = "block";
     }
 }
 
@@ -71,16 +87,6 @@ document.getElementById("transaction-type").addEventListener("change", function 
         transferField.style.display = "block";
     }
 });
-
-let totalIncome = 0;
-let totalExpense = 0;
-
-function updateTotal() {
-    document.getElementById("total-income").textContent = `Total Income so far: $${totalIncome.toFixed(2)}`;
-    document.getElementById("total-expense").textContent = `Total Expense so far: $${totalExpense.toFixed(2)}`;
-    let netBalance = totalIncome - totalExpense;
-    document.getElementById("net-balance").textContent = `Net Balance: $${netBalance.toFixed(2)}`;
-}
 
 // Add a new transaction
 document.getElementById("add-transaction").addEventListener("click", function () {
@@ -123,15 +129,66 @@ document.getElementById("add-transaction").addEventListener("click", function ()
     newTransaction.classList.add(type);
     transactionList.appendChild(newTransaction);
 
+    saveTransactionHistory(type, amount, transactionDetails);
+
     updateTotal()
 
     // Reset input fields
     resetFields();
 });
 
+let totalIncome = 0;
+let totalExpense = 0;
+
+function updateTotal() {
+    document.getElementById("total-income").textContent = `Total Income so far: $${totalIncome.toFixed(2)}`;
+    document.getElementById("total-expense").textContent = `Total Expense so far: $${totalExpense.toFixed(2)}`;
+    let netBalance = totalIncome - totalExpense;
+    document.getElementById("net-balance").textContent = `Net Balance: $${netBalance.toFixed(2)}`;
+}
+
 // Helper function to capitalize the first letter of a string
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function saveTransactionHistory(type, amount, transactionDetails) {
+    let transactions = [];
+
+    if (localStorage.length > 0 && localStorage.getItem("transaction")) {
+        transactions = JSON.parse(localStorage.getItem("transactions"))
+    }
+
+    transactions.push({ type, amount, details: transactionDetails });
+
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+function loadTransactionHistory() {
+    let transactions = [];
+
+    if (localStorage.length > 0 && localStorage.getItem("transactions")) {
+        transactions = JSON.parse(localStorage.getItem("transactions"));
+    }
+
+    const transactionList = document.getElementById("transaction-list");
+
+    for (let i = 0; i < transactions.length; i++) {
+        const transaction = transactions[i]; // Get each transactions
+        const newTransaction = document.createElement("li");
+        newTransaction.innerHTML = transaction.details; // Set the details of the transaction
+        newTransaction.classList.add(transaction.type); // Add the appropriate class based on the type
+        transactionList.appendChild(newTransaction); // Append the new list item to the transaction list
+
+        if (transaction.type === "income") {
+            totalIncome += transaction.amount;
+        }
+        else if (transaction.type == "income") {
+            totalExpense += transaction.amount
+        }
+    }
+
+    updateTotal();
 }
 
 // Helper function to reset input fields to their default state
@@ -139,6 +196,7 @@ function resetFields() {
     const type = document.getElementById("transaction-type").value;
 
     document.getElementById("amount").value = "";
+
     if (type === "expense"){
         document.getElementById("expense-field").style.display = "";
         document.getElementById("expense-account").value = "";
@@ -158,6 +216,3 @@ function resetFields() {
         document.getElementById("transfer-notes").value = "";
     }
 }
-
-initialize();
-updateTotal();
