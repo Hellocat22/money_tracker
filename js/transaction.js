@@ -43,24 +43,24 @@ function start() {
             const account = document.getElementById("expense-account").value;
             const category = document.getElementById("expense-category").value;
             const notes = document.getElementById("expense-notes").value;
-            details = `Account: ${account}, Category: ${category}, Notes: ${notes}`;
+            details = `Account: ${account} | Category: ${category} | Notes: ${notes}`;
             totalExpense += amount;
         }
         else if (type === "income") {
             const account = document.getElementById("income-account").value;
             const category = document.getElementById("income-category").value;
             const notes = document.getElementById("income-notes").value;
-            details = `Account: ${account}, Category: ${category}, Notes: ${notes}`;
+            details = `Account: ${account} | Category: ${category} | Notes: ${notes}`;
             totalIncome += amount;
         }
         else if (type === "transfer") {
             const fromAccount = document.getElementById("transfer-fromAccount").value;
             const toAccount = document.getElementById("transfer-toAccount").value;
             const notes = document.getElementById("transfer-notes").value;
-            details = `From: ${fromAccount}, To: ${toAccount}, Notes: ${notes}`;
+            details = `From: ${fromAccount} | To: ${toAccount} | Notes: ${notes}`;
         }
 
-        const timestamp = 'txn-' + new Date().getTime();
+        const timestamp = new Date().getTime();
         const transaction = { type, amount, details, timestamp };
         localStorage.setItem(timestamp, JSON.stringify(transaction));
 
@@ -76,14 +76,20 @@ function start() {
 
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
-            if (key.startsWith('txn-')) {
+            // Check if the key is a valid number (timestamp)
+            // localStorage.key(i) returns the key as a string, even if it's a numeric timestamp. 
+            // !isNaN(key) ensures that the key can be interpreted as a valid number (timestamp) 
+            // before processing it as a transaction. This avoids mistakenly processing 
+            // non-numeric keys (such as "user-preference" or "settings") that aren't related 
+            // to transactions.
+            if (!isNaN(key)) {
                 const data = JSON.parse(localStorage.getItem(key));
                 transactions.push(data);
             }
         }
 
         // Sort transactions by timestamp (ascending)
-        transactions.sort((a, b) => a.timestamp - b.timestamp);
+        transactions.sort((a, b) => b.timestamp - a.timestamp);
 
         totalIncome = 0;
         totalExpense = 0;
