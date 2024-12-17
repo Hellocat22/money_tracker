@@ -50,6 +50,7 @@ h2 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 20px; /*testing gap*/
 }
 
 .transaction-type, .transaction-history {
@@ -93,6 +94,7 @@ form button:hover {
 }
 
 .history {
+    flex: 2;
     text-align: left;
     border: solid 1px;
     width: 80%;
@@ -129,12 +131,22 @@ form button:hover {
 }
 
 .total {
-    text-align: right;
+    flex: 1;
+    padding: 20px;
+    text-align: justify;
     border: solid 1px;
-    width: 80%;
+
     font-size: large;
     background-color: rgb(255, 255, 255);
     border-color: rgb(200, 200, 200);
+}
+.wrapper {
+    display: flex; /* Only this part has horizontal layout */
+    justify-content: center; /* Spread history and total */
+    gap: 20px;/* Add spacing between the boxes */
+    width: 80%; /* Ensure it spans the full width */
+    padding: 0 20px;
+    height: 110px;
 }
 
 .total, .total-income, .total-expense, .net-balance {

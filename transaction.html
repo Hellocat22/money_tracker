@@ -28,13 +28,13 @@
             </select>
 
             <div id="expense-field" style="display: none;">
-                <label for="expense-account">Account:</label>
+                <label for="expense-account">  Account:</label>
                 <input type="text" id="expense-account" placeholder="Account Name">
 
-                <label for="expense-category">Category:</label>
+                <label for="expense-category">  Category:</label>
                 <input type="text" id="expense-category" placeholder="Expense Category">
 
-                <label for="expense-notes">Notes:</label>
+                <label for="expense-notes">  Notes:</label>
                 <input type="text" id="expense-notes" placeholder="Notes">
             </div>
 
@@ -65,18 +65,20 @@
 
             <button type="button" id="add-transaction">Add Transaction</button>
         </form>
-        <div id="history" class="history">
-            <div class="transaction-history">
-                <label for="transaction-history">Transaction History</label>
+        <div class = "wrapper">
+            <div id="history" class="history">
+                <div class="transaction-history">
+                    <label for="transaction-history">Transaction History</label>
+                </div>
+                <ul id="transaction-history">
+                    
+                </ul>
             </div>
-            <ul id="transaction-history">
-                
-            </ul>
-        </div>
-        <div id="total" class="total">
-            <div id="total-income" class="total-income"></div>
-            <div id="total-expense" class="total-expense"></div>
-            <div id="net-balance" class="net-balance"></div>
+            <div id="total" class="total">
+                <div id="total-income" class="total-income"></div>
+                <div id="total-expense" class="total-expense"></div>
+                <div id="net-balance" class="net-balance"></div>
+            </div>
         </div>
     </div>
 
