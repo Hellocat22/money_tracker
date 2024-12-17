@@ -108,7 +108,7 @@ function start() {
 
             // Append transaction as a string to the innerHTML
             transactionHistory.innerHTML += `
-                <li class="${transaction.type}>
+                <li class="${transaction.type}">
                     <div>
                         <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount.toFixed(2)}<br>
                         ${transaction.details}

@@ -106,7 +106,6 @@ form button:hover {
     padding: 0;
     border: solid 1px;
     border-color: rgb(200, 200, 200);
-    vertical-align: top;
 }
 
 .history li {
