@@ -1,6 +1,6 @@
 function start() {
     const addTransactionButton = document.getElementById('add-transaction');
-    const transactionList = document.getElementById('transaction-list');
+    const transactionHistory = document.getElementById('transaction-history');
     let totalIncome = 0;
     let totalExpense = 0;
 
@@ -33,7 +33,7 @@ function start() {
         const type = document.getElementById("transaction-type").value;
         const amount = parseFloat(document.getElementById("amount").value);
 
-        if (isNaN(amount) || amount <= 0) {
+        if (isNaN(amount) || amount <= 0 || !amount) {
             alert("Please enter a valid amount!");
             return;
         }
@@ -43,21 +43,21 @@ function start() {
             const account = document.getElementById("expense-account").value;
             const category = document.getElementById("expense-category").value;
             const notes = document.getElementById("expense-notes").value;
-            details = `Account: ${account} | Category: ${category} | Notes: ${notes}`;
+            details = `Account: ${account} || Category: ${category} || Notes: ${notes}`;
             totalExpense += amount;
         }
         else if (type === "income") {
             const account = document.getElementById("income-account").value;
             const category = document.getElementById("income-category").value;
             const notes = document.getElementById("income-notes").value;
-            details = `Account: ${account} | Category: ${category} | Notes: ${notes}`;
+            details = `Account: ${account} || Category: ${category} || Notes: ${notes}`;
             totalIncome += amount;
         }
         else if (type === "transfer") {
             const fromAccount = document.getElementById("transfer-fromAccount").value;
             const toAccount = document.getElementById("transfer-toAccount").value;
             const notes = document.getElementById("transfer-notes").value;
-            details = `From: ${fromAccount} | To: ${toAccount} | Notes: ${notes}`;
+            details = `From: ${fromAccount} || To: ${toAccount} || Notes: ${notes}`;
         }
 
         const timestamp = new Date().getTime();
@@ -71,7 +71,7 @@ function start() {
 
     // Load transaction history
     function loadTransactionHistory() {
-        transactionList.innerHTML = '';
+        transactionHistory.innerHTML = '';
         const transactions = [];
 
         for (let i = 0; i < localStorage.length; i++) {
@@ -107,8 +107,8 @@ function start() {
             if (transaction.type === "expense") totalExpense += transaction.amount;
 
             // Append transaction as a string to the innerHTML
-            transactionList.innerHTML += `
-                <li class="${transaction.type}">
+            transactionHistory.innerHTML += `
+                <li class="${transaction.type}>
                     <div>
                         <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount.toFixed(2)}<br>
                         ${transaction.details}

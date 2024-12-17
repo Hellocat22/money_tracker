@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
 }
@@ -19,40 +19,52 @@ body {
     padding: 20px 20px;
     cursor: pointer;
     background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .navbar li a {
     padding: 20px 20px;
     cursor: pointer;
     background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration: none;
 }
 
 .navbar li:hover {
     background-color: #388e3c;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .navbar li.active {
     background-color: #388e3c;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 h2 {
     padding: 10px 100px 10px 100px;
 }
 
+.transaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.transaction-type, .transaction-history {
+    background-color: rgb(200, 200, 200);
+    padding: 20px;
+}
+
 form {
     display: flex;
     flex-direction: column;
-    padding: 10px 100px 10px 100px;
-}
-
-form label {
-    margin: 0px 0px 10px 0px;
+    border: 1px solid;
+    width: 80%;
+    border-bottom: none;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
 }
 
 form input,
@@ -61,7 +73,7 @@ form select {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     font-size: 16px;
 }
 
@@ -71,7 +83,7 @@ form button {
     background-color: rgb(50, 200, 50);
     border: none;
     border-radius: 5px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 16px;
     cursor: pointer;
 }
@@ -81,27 +93,32 @@ form button:hover {
 }
 
 .history {
-    padding: 10px 100px 10px 100px;
     text-align: left;
+    border: solid 1px;
+    width: 80%;
+    border-bottom: none;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
 }
 
 .history ul {
     list-style-type: none;
     padding: 0;
+    border: solid 1px;
+    border-color: rgb(200, 200, 200);
+    vertical-align: top;
 }
 
 .history li {
-    margin: 10px 0;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: rgb(245, 245, 245);
     border-left: 10px solid rgb(50, 200, 50);
-    border-radius: 10px;
     display: flex;
     justify-content: space-between;
 }
 
 .history li.expense {
-    border-left: 10px solid #f44336;
+    border-left: 10px solid rgb(240, 50, 50);
 }
 
 .history li.income {
@@ -109,5 +126,17 @@ form button:hover {
 }
 
 .history li.transfer {
-    border-left: 10px solid #2196f3;
+    border-left: 10px solid rgb(50, 100, 240);
+}
+
+.total {
+    text-align: right;
+    border: solid 1px;
+    width: 80%;
+    font-size: large;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
+}
+
+.total, .total-income, .total-expense, .net-balance {
 }

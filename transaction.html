@@ -11,65 +11,73 @@
         <ul>
             <li id="dashboard-tab"><a href='index.html'>Dashboard</a></li>
             <li id="transaction-tab" class="active"><a href='transaction.html'>Transactions</a></li>
-            <li id="account-tab"><a href=''>Accounts</a></li>
+            <li id="account-tab"><a href='account.html'>Accounts</a></li>
         </ul>
     </nav>
     <h2>Manage Transactions</h2>
-    <div id="total">
-        <h4 id="total-income"></h4>
-        <h4 id="total-expense"></h4>
-        <h4 id="net-balance"></h4>
-    </div>
-    <form id="transaction-form">
-        <label for="transaction-type">Transaction Type:</label>
-        <select id="transaction-type">
-            <option value="expense">Expense</option>
-            <option value="income">Income</option>
-            <option value="transfer">Transfer</option>
-        </select>
+    <div class="transaction">
+        <form id="transaction-form">
+            <div class="transaction-type">
+                <label for="transaction-type">Transaction Type</label>
+            </div>
 
-        <div id="expense-field" style="display: none;">
-            <label for="expense-account">Account:</label>
-            <input type="text" id="expense-account" placeholder="Account Name">
+            <select id="transaction-type">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+                <option value="transfer">Transfer</option>
+            </select>
 
-            <label for="expense-category">Category:</label>
-            <input type="text" id="expense-category" placeholder="Expense Category">
+            <div id="expense-field" style="display: none;">
+                <label for="expense-account">Account:</label>
+                <input type="text" id="expense-account" placeholder="Account Name">
 
-            <label for="expense-notes">Notes:</label>
-            <input type="text" id="expense-notes" placeholder="Notes">
+                <label for="expense-category">Category:</label>
+                <input type="text" id="expense-category" placeholder="Expense Category">
+
+                <label for="expense-notes">Notes:</label>
+                <input type="text" id="expense-notes" placeholder="Notes">
+            </div>
+
+            <div id="income-field" style="display: none;">
+                <label for="income-account">Account:</label>
+                <input type="text" id="income-account" placeholder="Account Name">
+
+                <label for="income-category">Category:</label>
+                <input type="text" id="income-category" placeholder="Income Category">
+
+                <label for="income-notes">Notes:</label>
+                <input type="text" id="income-notes" placeholder="Notes">
+            </div>
+
+            <div id="transfer-field" style="display: none;">
+                <label for="transfer-fromAccount">From:</label>
+                <input type="text" id="transfer-fromAccount" placeholder="Account">
+
+                <label for="transfer-toAccount">To:</label>
+                <input type="text" id="transfer-toAccount" placeholder="Account">
+
+                <label for="transfer-notes">Notes:</label>
+                <input type="text" id="transfer-notes" placeholder="Notes">
+            </div>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Amount">
+
+            <button type="button" id="add-transaction">Add Transaction</button>
+        </form>
+        <div id="history" class="history">
+            <div class="transaction-history">
+                <label for="transaction-history">Transaction History</label>
+            </div>
+            <ul id="transaction-history">
+                
+            </ul>
         </div>
-
-        <div id="income-field" style="display: none;">
-            <label for="income-account">Account:</label>
-            <input type="text" id="income-account" placeholder="Account Name">
-
-            <label for="income-category">Category:</label>
-            <input type="text" id="income-category" placeholder="Income Category">
-
-            <label for="income-notes">Notes:</label>
-            <input type="text" id="income-notes" placeholder="Notes">
+        <div id="total" class="total">
+            <div id="total-income" class="total-income"></div>
+            <div id="total-expense" class="total-expense"></div>
+            <div id="net-balance" class="net-balance"></div>
         </div>
-
-        <div id="transfer-field" style="display: none;">
-            <label for="transfer-fromAccount">From:</label>
-            <input type="text" id="transfer-fromAccount" placeholder="Account">
-
-            <label for="transfer-toAccount">To:</label>
-            <input type="text" id="transfer-toAccount" placeholder="Account">
-
-            <label for="transfer-notes">Notes:</label>
-            <input type="text" id="transfer-notes" placeholder="Notes">
-        </div>
-
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" placeholder="Amount">
-
-        <button type="button" id="add-transaction">Add Transaction</button>
-    </form>
-
-    <div id="history" class="history">
-        <h3>Transaction History</h3>
-        <ul id="transaction-list"></ul>
     </div>
 
     <script src="./js/transaction.js"></script>
