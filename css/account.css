@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: rgb(255, 255, 255); /* Updated background color */
     display: flex;
     flex-direction: column;
 }
@@ -19,31 +19,103 @@ body {
     padding: 20px 20px;
     cursor: pointer;
     background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .navbar li a {
     padding: 20px 20px;
     cursor: pointer;
     background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration: none;
 }
 
 .navbar li:hover {
     background-color: #388e3c;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .navbar li.active {
     background-color: #388e3c;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
-.main-content {
-    flex: 1;
+h2 {
+    padding: 10px 100px 10px 100px;
+}
+
+form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    border: 1px solid;
+    border-radius: 11px;
+    border-bottom: none;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
+}
+
+form input,
+form select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(50, 200, 50);
+    border: none;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+.account {
+    width: 80%;
+    flex: 2;
+    text-align: left;
+    border: solid 1px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
+}
+
+.account-category {
+    background-color: rgb(200, 200, 200);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.account-list {
+    margin: 20px 100px;
+}
+
+.account-list div {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.account-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.account-list li {
+    padding: 5px;
+    background-color: rgb(245, 245, 245);
+    border: solid 1px rgb(200, 200, 200);
+    margin-bottom: 5px;
+    border-radius: 5px;
 }

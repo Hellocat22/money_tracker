@@ -15,49 +15,51 @@
         </ul>
     </nav>
     <h2>Manage Accounts</h2>
-    <form id="account-form">
-        <div class="account-category">
-            <label for="add-account">Add Account</label>
-        </div>
-
-        <div>
-            <label for="account-category"> Account Category:</label>
-            <select id="account-category">
-                <option>Cash</option>
-                <option>Bank Account</option>
-                <option>Credit</option>
-                <option>Savings</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="account-name">Name:</label>
-            <input type="text" id="account-name" placeholder="Account Name">
-        </div>
-
-        <button type="button" id="add-account">Add Account</button>
-    </form>
-
-    <div id="account-list" class="account-list">
-        <div>Cash</div>
-        <ul id="cash" class="cash">
+    <div class="account">
+        <form id="account-form">
+            <div class="account-category">
+                <label for="add-account">Add Account</label>
+            </div>
     
-        </ul>
+            <div>
+                <label for="account-category"> Account Category:</label>
+                <select id="account-category">
+                    <option>Cash</option>
+                    <option>Bank Account</option>
+                    <option>Credit</option>
+                    <option>Savings</option>
+                </select>
+            </div>
+    
+            <div>
+                <label for="account-name">Name:</label>
+                <input type="text" id="account-name" placeholder="Account Name">
+            </div>
+    
+            <button type="button" id="add-account">Add Account</button>
+        </form>
+    
+        <div id="account-list" class="account-list">
+            <div>Cash</div>
+            <ul id="cash" class="cash">
         
-        <div>Bank Account</div>
-        <ul id="bank-account" class="bank-account">
+            </ul>
+            
+            <div>Bank Account</div>
+            <ul id="bank-account" class="bank-account">
+        
+            </ul>
+        
+            <div>Credit</div>
+            <ul id="credit" class="credit">
+        
+            </ul>
     
-        </ul>
-    
-        <div>Credit</div>
-        <ul id="credit" class="credit">
-    
-        </ul>
-
-        <div>Savings</div>
-        <ul id="savings" class="savings">
-    
-        </ul>
+            <div>Savings</div>
+            <ul id="savings" class="savings">
+        
+            </ul>
+        </div>
     </div>
     
     <script src="./js/account.js"></script>
