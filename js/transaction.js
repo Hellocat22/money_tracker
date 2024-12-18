@@ -110,7 +110,7 @@ function start() {
             transactionHistory.innerHTML += `
                 <li class="${transaction.type}">
                     <div>
-                        <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount.toFixed(2)}<br>
+                        <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount}<br>
                         ${transaction.details}
                     </div>
                     <button onclick="removeTransaction('${transaction.timestamp}')">Remove</button>
@@ -124,9 +124,9 @@ function start() {
     // Update totals
     function updateTotals() {
         const netBalance = totalIncome - totalExpense;
-        document.getElementById("total-income").textContent = `Total Income: $${totalIncome.toFixed(2)}`;
-        document.getElementById("total-expense").textContent = `Total Expense: $${totalExpense.toFixed(2)}`;
-        document.getElementById("net-balance").textContent = `Net Balance: $${netBalance.toFixed(2)}`;
+        document.getElementById("total-income").textContent = `Total Income: $${totalIncome}`;
+        document.getElementById("total-expense").textContent = `Total Expense: $${totalExpense}`;
+        document.getElementById("net-balance").textContent = `Net Balance: $${netBalance}`;
     }
 
     // Reset form fields
