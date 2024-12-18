@@ -56,12 +56,14 @@ h2 {
 .transaction-type, .transaction-history {
     background-color: rgb(200, 200, 200);
     padding: 20px;
+    border-radius: 10px 10px 0 0;
 }
 
 form {
     display: flex;
     flex-direction: column;
     border: 1px solid;
+    border-radius: 11px;
     width: 80%;
     border-bottom: none;
     background-color: rgb(255, 255, 255);
@@ -98,7 +100,7 @@ form button:hover {
     text-align: left;
     border: solid 1px;
     width: 80%;
-    border-bottom: none;
+    border-radius: 10px;
     background-color: rgb(255, 255, 255);
     border-color: rgb(200, 200, 200);
 }
@@ -135,7 +137,7 @@ form button:hover {
     padding: 20px;
     text-align: justify;
     border: solid 1px;
-
+    border-radius: 10px;
     font-size: large;
     background-color: rgb(255, 255, 255);
     border-color: rgb(200, 200, 200);

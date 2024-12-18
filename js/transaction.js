@@ -32,11 +32,14 @@ function start() {
     addTransactionButton.addEventListener("click", function () {
         const type = document.getElementById("transaction-type").value;
         const amount = parseFloat(document.getElementById("amount").value);
+        const dateInput = document.getElementById("transaction-date").value;
 
         if (isNaN(amount) || amount <= 0 || !amount) {
             alert("Please enter a valid amount!");
             return;
         }
+
+        const date = dateInput ? dateInput : new Date().toISOString().split("T")[0];
 
         let details = '';
         if (type === "expense") {
@@ -61,7 +64,7 @@ function start() {
         }
 
         const timestamp = new Date().getTime();
-        const transaction = { type, amount, details, timestamp };
+        const transaction = { type, amount, date, details, timestamp };
         localStorage.setItem(timestamp, JSON.stringify(transaction));
 
         loadTransactionHistory();
@@ -89,7 +92,15 @@ function start() {
         }
 
         // Sort transactions by timestamp (ascending)
-        transactions.sort((a, b) => b.timestamp - a.timestamp);
+        transactions.sort((a, b) => {
+            const A = new Date(a.date).getTime();
+            const B = new Date(b.date).getTime();
+
+            if(A !== B){
+                return B - A;
+            }
+            return b.timestamp - a.timestamp;
+        });
 
         totalIncome = 0;
         totalExpense = 0;
@@ -111,6 +122,7 @@ function start() {
                 <li class="${transaction.type}">
                     <div>
                         <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount}<br>
+                        Date: ${transaction.date}<br>
                         ${transaction.details}
                     </div>
                     <button onclick="removeTransaction('${transaction.timestamp}')">Remove</button>
@@ -127,13 +139,18 @@ function start() {
         document.getElementById("total-income").textContent = `Total Income: $${totalIncome}`;
         document.getElementById("total-expense").textContent = `Total Expense: $${totalExpense}`;
         document.getElementById("net-balance").textContent = `Net Balance: $${netBalance}`;
+
+        localStorage.setItem("totalIncome", totalIncome);
+        localStorage.setItem("totalExpense", totalExpense);
+        localStorage.setItem("netBalance", netBalance);
     }
 
     // Reset form fields
     function resetFields() {
         const type = document.getElementById("transaction-type").value;
-
+        
         document.getElementById("amount").value = "";
+        document.getElementById("transaction-date").value = "";
 
         if (type === "expense") {
             document.getElementById("expense-field").style.display = "";
