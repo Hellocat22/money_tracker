@@ -44,16 +44,16 @@ function start() {
         let details = '';
         if (type === "expense") {
             const account = document.getElementById("expense-account").value;
-            const category = document.getElementById("expense-category").value;
+            const tag = document.getElementById("expense-tag").value;
             const notes = document.getElementById("expense-notes").value;
-            details = `Account: ${account} || Category: ${category} || Notes: ${notes}`;
+            details = `Account: ${account} || Tag: ${tag} || Notes: ${notes}`;
             totalExpense += amount;
         }
         else if (type === "income") {
             const account = document.getElementById("income-account").value;
-            const category = document.getElementById("income-category").value;
+            const tag = document.getElementById("income-tag").value;
             const notes = document.getElementById("income-notes").value;
-            details = `Account: ${account} || Category: ${category} || Notes: ${notes}`;
+            details = `Account: ${account} || Tag: ${tag} || Notes: ${notes}`;
             totalIncome += amount;
         }
         else if (type === "transfer") {
@@ -155,13 +155,13 @@ function start() {
         if (type === "expense") {
             document.getElementById("expense-field").style.display = "";
             document.getElementById("expense-account").value = "";
-            document.getElementById("expense-category").value = "";
+            document.getElementById("expense-tag").value = "";
             document.getElementById("expense-notes").value = "";
         }
         else if (type === "income") {
             document.getElementById("income-field").style.display = "";
             document.getElementById("income-account").value = "";
-            document.getElementById("income-category").value = "";
+            document.getElementById("income-tag").value = "";
             document.getElementById("income-notes").value = "";
         }
         else if (type === "transfer") {
