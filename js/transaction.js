@@ -201,7 +201,18 @@ function start() {
 
     // Remove a single transaction
     window.removeTransaction = function (timestamp) {
-        localStorage.removeItem(timestamp);
+        // Loop through all items in localStorage
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i); // Get the key at the current index
+    
+            // If the key is equal to the timestamp (indicating it's the transaction we want to remove)
+            if (key === timestamp) {
+                localStorage.removeItem(key); // Remove the item
+                break; // Exit the loop after removing the transaction
+            }
+        }
+        
+        // Reload transaction history after removal
         loadTransactionHistory();
     };
 

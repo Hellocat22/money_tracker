@@ -76,10 +76,22 @@ function start() {
     // Remove an account
     window.removeAccount = function (id) {
         let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        accounts = accounts.filter(function (account) {
-            return account.id !== id;
-        });
-        localStorage.setItem('accounts', JSON.stringify(accounts));
+        
+        // Create a new array to store the accounts after removal
+        let updatedAccounts = [];
+    
+        // Loop through each account in the list
+        for (let i = 0; i < accounts.length; i++) {
+            // If the account's ID doesn't match the one to remove, add it to the updated array
+            if (accounts[i].id !== id) {
+                updatedAccounts.push(accounts[i]);
+            }
+        }
+        
+        // Save the updated list of accounts back to localStorage
+        localStorage.setItem('accounts', JSON.stringify(updatedAccounts));
+        
+        // Reload the account list on the page
         loadAccounts();
     };
 
