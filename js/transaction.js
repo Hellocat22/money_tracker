@@ -8,8 +8,34 @@ function start() {
     document.getElementById("transaction-type").addEventListener("change", showTransactionFields);
     showTransactionFields(); // Initial call to set up fields on load
 
+    // Load accounts from localStorage
+    function loadAccounts() {
+        const accounts = JSON.parse(localStorage.getItem('accounts')) || []; // Get accounts if there is any else get NULL
+        return accounts;
+    }
+
+    function loadAccountList() {
+        const accounts = loadAccounts();
+
+        // Helper function to create account options
+        const createAccountOptions = (accounts) => {
+            let optionsHtml = '';
+            for (let i = 0; i < accounts.length; i++) {
+                optionsHtml += `<option value="${accounts[i].name}">${accounts[i].name}</option>`;
+            }
+            return optionsHtml;
+        };
+
+         // Set account options in the fields
+         document.getElementById('expense-account').innerHTML = createAccountOptions(accounts);
+         document.getElementById('income-account').innerHTML = createAccountOptions(accounts);
+         document.getElementById('transfer-fromAccount').innerHTML = createAccountOptions(accounts);
+         document.getElementById('transfer-toAccount').innerHTML = createAccountOptions(accounts);
+    }
+
     function showTransactionFields() {
         const type = document.getElementById("transaction-type").value;
+        loadAccountList(); // Populate account fields every time transaction type is changed
     
         if (type === "expense") {
             document.getElementById("expense-field").style.display = "block";

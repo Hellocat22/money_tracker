@@ -28,19 +28,23 @@
             </select>
 
             <div id="expense-field" style="display: none;">
-                <label for="expense-account">  Account:</label>
-                <input type="text" id="expense-account" placeholder="Account Name">
+                <label for="expense-account">Account:</label>
+                <select id="expense-account">
+                    <!-- Accounts will be populated here -->
+                </select>
 
-                <label for="expense-tag">  Tag:</label>
+                <label for="expense-tag">Tag:</label>
                 <input type="text" id="expense-tag" placeholder="Expense Tag">
 
-                <label for="expense-notes">  Notes:</label>
+                <label for="expense-notes">Notes:</label>
                 <input type="text" id="expense-notes" placeholder="Notes">
             </div>
 
             <div id="income-field" style="display: none;">
                 <label for="income-account">Account:</label>
-                <input type="text" id="income-account" placeholder="Account Name">
+                <select id="income-account">
+                    <!-- Accounts will be populated here -->
+                </select>
 
                 <label for="income-tag">Tag:</label>
                 <input type="text" id="income-tag" placeholder="Income Tag">
@@ -51,10 +55,14 @@
 
             <div id="transfer-field" style="display: none;">
                 <label for="transfer-fromAccount">From:</label>
-                <input type="text" id="transfer-fromAccount" placeholder="Account">
+                <select id="transfer-fromAccount">
+                    <!-- Accounts will be populated here -->
+                </select>
 
                 <label for="transfer-toAccount">To:</label>
-                <input type="text" id="transfer-toAccount" placeholder="Account">
+                <select id="transfer-toAccount">
+                    <!-- Accounts will be populated here -->
+                </select>
 
                 <label for="transfer-notes">Notes:</label>
                 <input type="text" id="transfer-notes" placeholder="Notes">

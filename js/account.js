@@ -1,4 +1,4 @@
-function manageAccounts() {
+function start() {
     const addAccountButton = document.getElementById('add-account');
     const accountCategory = document.getElementById('account-category');
     const accountName = document.getElementById('account-name');
@@ -87,4 +87,4 @@ function manageAccounts() {
     loadAccounts();
 }
 
-window.addEventListener('load', manageAccounts);
+window.addEventListener('load', start, false);
