@@ -45,12 +45,20 @@ h2 {
     padding: 10px 100px 10px 100px;
 }
 
+.account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
 form {
     display: flex;
     flex-direction: column;
     border: 1px solid;
     border-radius: 11px;
-    border-bottom: none;
+    width: 80%;
     background-color: rgb(255, 255, 255);
     border-color: rgb(200, 200, 200);
 }
@@ -80,20 +88,15 @@ form button:hover {
     background-color: #45a049;
 }
 
-.account {
-    width: 80%;
-    flex: 2;
-    text-align: left;
-    border: solid 1px;
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(200, 200, 200);
-}
-
-.account-category {
+.add-account {
     background-color: rgb(200, 200, 200);
     padding: 10px;
     border-radius: 5px;
+}
+
+.account-category {
+    display: flex;
+    flex-direction: column;
 }
 
 .account-list {

@@ -53,13 +53,6 @@ h2 {
     gap: 20px; /*testing gap*/
 }
 
-.transaction-type, .transaction-history {
-    background-color: rgb(200, 200, 200);
-    padding: 20px;
-    border-radius: 10px 10px 0 0;
-    display: block;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -94,6 +87,13 @@ form button {
 
 form button:hover {
     background-color: #45a049;
+}
+
+.transaction-type, .transaction-history {
+    background-color: rgb(200, 200, 200);
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    display: block;
 }
 
 .history {
