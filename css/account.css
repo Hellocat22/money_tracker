@@ -100,7 +100,13 @@ form button:hover {
 }
 
 .account-list {
-    margin: 20px 100px;
+    flex: 2;
+    text-align: left;
+    border: solid 1px;
+    width: 80%;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
 }
 
 .account-list div {
@@ -112,13 +118,16 @@ form button:hover {
 .account-list ul {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0;
+    border: solid 1px;
+    border-color: rgb(200, 200, 200);
+    display: block;
+    border-bottom: none;
 }
 
 .account-list li {
-    padding: 5px;
+    padding: 10px;
     background-color: rgb(245, 245, 245);
-    border: solid 1px rgb(200, 200, 200);
-    margin-bottom: 5px;
-    border-radius: 5px;
+    border-left: 10px solid rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
 }
