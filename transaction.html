@@ -27,7 +27,7 @@
         <table class="main-table">
             <!-- Header Row -->
             <tr>
-                <th colspan="3">
+                <th colspan="4">
                     <h2>Manage Transactions</h2>
                 </th>
             </tr>
@@ -38,7 +38,7 @@
                     <form id="transaction-form">
                         <table>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <div class="transaction-label">
                                         <h3>Add Transaction</h3>
                                     </div>
@@ -48,7 +48,7 @@
                                 <td>
                                     <label for="transaction-type">Transaction Type:</label>
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <select id="transaction-type" class="transaction-type">
                                         <option value="expense">Expense</option>
                                         <option value="income">Income</option>
@@ -67,16 +67,12 @@
                                         <!-- Accounts will be populated here -->
                                     </select>
                                 </td>
-                            </tr>
-                            <tr id="expense-field" style="display: none;">
                                 <td>
                                     <label for="expense-tag">Tag:</label>
                                 </td>
                                 <td>
                                     <input type="text" id="expense-tag" placeholder="Expense Tag">
                                 </td>
-                            </tr>
-                            <tr id="expense-field" style="display: none;">
                                 <td>
                                     <label for="expense-notes">Notes:</label>
                                 </td>
@@ -95,7 +91,7 @@
                                         <!-- Accounts will be populated here -->
                                     </select>
                                 </td>
-                                <td id="income-field" style="display: none;">
+                                <td>
                                     <label for="income-tag">Tag:</label>
                                 </td>
                                 <td>
@@ -127,8 +123,6 @@
                                         <!-- Accounts will be populated here -->
                                     </select>
                                 </td>
-                            </tr>
-                            <tr id="transfer-field" style="display: none;">
                                 <td>
                                     <label for="transfer-notes">Notes:</label>
                                 </td>
@@ -142,7 +136,7 @@
                                 <td>
                                     <label for="amount">Amount:</label>
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input type="number" id="amount" placeholder="Amount">
                                 </td>
                             </tr>
@@ -150,37 +144,32 @@
                                 <td>
                                     <label for="transaction-date">Set custom date (if necessary):</label>
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input type="date" id="transaction-date">
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="form-action">
+                                <td colspan="3" class="form-action">
                                     <button type="button" id="add-transaction">Add Transaction</button>
                                 </td>
                             </tr>
                         </table>
                     </form>
                 </td>
-            </tr>
-
-            <!-- Transaction History -->
-            <tr>
                 <td colspan="2">
-                    <div id="history" class="history">
-                        <h3>Transaction History</h3>
-                        <ul id="transaction-history">
-                            <!-- Transaction history will populate here -->
-                        </ul>
-                    </div>
-                </td>
-            <!-- Totals Section -->
-                <td colspan="2">
+                    <!-- Totals Section -->
                     <div id="total" class="total">
                         <h3>Transaction Overview</h3>
                         <div id="total-income" class="total-income"></div>
                         <div id="total-expense" class="total-expense"></div>
                         <div id="net-balance" class="net-balance"></div>
+                    </div>
+                    <!-- Transaction History -->
+                    <div id="history" class="history">
+                        <h3>Transaction History</h3>
+                        <ul id="transaction-history">
+                            <!-- Transaction history will populate here -->
+                        </ul>
                     </div>
                 </td>
             </tr>
