@@ -41,6 +41,7 @@ function start() {
             document.getElementById("transfer-toAccount").value = "";
             document.getElementById("transfer-notes").value = "";
         }
+
         loadTransactionFields();
     }
 
