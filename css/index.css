@@ -82,6 +82,8 @@ body {
 .history {
     flex: 2;
     text-align: left;
+    overflow-y: auto;
+    max-height: 400px;
 }
 
 .history ul {
