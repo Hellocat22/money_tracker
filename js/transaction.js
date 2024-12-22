@@ -10,27 +10,6 @@ function start() {
     loadTransactionFields(); // Initial call to set up fields on load
     loadTransactionHistory(); // Initial load
 
-    function loadTransactionFields() {
-        const type = document.getElementById("transaction-type").value;
-        loadAccountList(); // Populate account fields every time transaction type is changed
-    
-        if (type === "expense") {
-            document.getElementById("expense-field").style.display = "block";
-            document.getElementById("income-field").style.display = "none";
-            document.getElementById("transfer-field").style.display = "none";
-        }
-        else if (type === "income") {
-            document.getElementById("expense-field").style.display = "none";
-            document.getElementById("income-field").style.display = "block";
-            document.getElementById("transfer-field").style.display = "none";
-        }
-        else if (type === "transfer") {
-            document.getElementById("expense-field").style.display = "none";
-            document.getElementById("income-field").style.display = "none";
-            document.getElementById("transfer-field").style.display = "block";
-        }
-    }
-
     // Reset form fields
     function resetFields() {
         const type = document.getElementById("transaction-type").value;
@@ -57,6 +36,27 @@ function start() {
             document.getElementById("transfer-notes").value = "";
         }
         loadTransactionFields();
+    }
+
+    function loadTransactionFields() {
+        const type = document.getElementById("transaction-type").value;
+        loadAccountList(); // Populate account fields every time transaction type is changed
+    
+        if (type === "expense") {
+            document.getElementById("expense-field").style.display = "block";
+            document.getElementById("income-field").style.display = "none";
+            document.getElementById("transfer-field").style.display = "none";
+        }
+        else if (type === "income") {
+            document.getElementById("expense-field").style.display = "none";
+            document.getElementById("income-field").style.display = "block";
+            document.getElementById("transfer-field").style.display = "none";
+        }
+        else if (type === "transfer") {
+            document.getElementById("expense-field").style.display = "none";
+            document.getElementById("income-field").style.display = "none";
+            document.getElementById("transfer-field").style.display = "block";
+        }
     }
 
     // Load accounts from localStorage

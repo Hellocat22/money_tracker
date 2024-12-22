@@ -52,7 +52,7 @@
                                     <select id="transaction-type" class="transaction-type">
                                         <option value="expense">Expense</option>
                                         <option value="income">Income</option>
-                                        <option value="transfer">Transfer (not implemented yet)</option>
+                                        <option value="transfer">Transfer</option>
                                     </select>
                                 </td>
                             </tr>
@@ -86,8 +86,8 @@
                             </tr>
 
                             <!-- Income Fields -->
-                            <tr id="income-field" style="display: none;">
-                                <td>
+                            <tr>
+                                <td id="income-field" style="display: none;">
                                     <label for="income-account">Account:</label>
                                 </td>
                                 <td>
@@ -95,17 +95,13 @@
                                         <!-- Accounts will be populated here -->
                                     </select>
                                 </td>
-                            </tr>
-                            <tr id="income-field" style="display: none;">
-                                <td>
+                                <td id="income-field" style="display: none;">
                                     <label for="income-tag">Tag:</label>
                                 </td>
                                 <td>
                                     <input type="text" id="income-tag" placeholder="Income Tag">
                                 </td>
-                            </tr>
-                            <tr id="income-field" style="display: none;">
-                                <td>
+                                <td id="income-field" style="display: none;">
                                     <label for="income-notes">Notes:</label>
                                 </td>
                                 <td>
