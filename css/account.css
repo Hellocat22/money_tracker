@@ -73,141 +73,13 @@ h3 {
     color: rgb(50, 200, 50);
 }
 
-/* Transaction Form */
+/* Account Form */
 form {
     display: flex;
     flex-direction: column;
     border: 1px solid rgb(200, 200, 200);
-    border-radius: 11px;
     background-color: rgb(255, 255, 255);
     padding: 20px;
-}
-
-form input,
-form select {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    font-size: 16px;
-}
-
-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(50, 200, 50);
-    border: none;
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #45a049;
-}
-
-/* Wrapper Section */
-.wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    padding: 0 20px;
-}
-
-/* Transaction History */
-.history {
-    flex: 2;
-    text-align: left;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-}
-
-.history h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: rgb(50, 200, 50);
-}
-
-.history ul {
-    list-style-type: none;
-    padding: 0;
-    border: 1px solid rgb(200, 200, 200);
-}
-
-.history li {
-    padding: 10px;
-    background-color: rgb(245, 245, 245);
-    border-left: 10px solid rgb(50, 200, 50);
-    display: flex;
-    justify-content: space-between;
-}
-
-.history li.expense {
-    border-left: 10px solid rgb(240, 50, 50);
-}
-
-.history li.income {
-    border-left: 10px solid rgb(50, 200, 50);
-}
-
-.history li.transfer {
-    border-left: 10px solid rgb(50, 100, 240);
-}
-
-/* Total Section */
-.total {
-    flex: 1;
-    padding: 20px;
-    text-align: justify;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 10px;
-    font-size: large;
-    background-color: rgb(255, 255, 255);
-}
-
-.total-income,
-.total-expense,
-.net-balance {
-    margin-top: 10px;
-}
-
-/* Table Styling */
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid rgb(200, 200, 200);
-    padding: 10px;
-}
-
-th {
-    background-color: rgb(50, 200, 50);
-    color: white;
-}
-
-td {
-    text-align: left;
-}
-
-td form {
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-}
-
-/* Account Form */
-.account-category {
-    display: flex;
-    flex-direction: column;
 }
 
 form input,
@@ -270,10 +142,22 @@ form button:hover {
     justify-content: space-between;
 }
 
-.button-container {
-    margin-left: auto; /* This pushes the container to the right */
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-button {
-    margin-left: 10px; /* Adds spacing between buttons */
+table, th, td {
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+th {
+    background-color: rgb(50, 200, 50);
+    color: white;
+}
+
+td {
+    text-align: left;
 }

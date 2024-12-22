@@ -52,8 +52,8 @@ function start() {
             const accountHtml = `
                 <li>
                     <div>
-                        <strong>${account.name}</strong><br>
-                        Balance: $${account.balance}
+                    <strong>${account.name}</strong><br>
+                    Balance: $${account.balance}
                     </div>
                     <div class="button-container">
                         <button onclick="editAccount(${account.id})">Edit</button>
