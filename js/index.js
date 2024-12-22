@@ -62,8 +62,11 @@ function start() {
             }
         });
     }
-    
-
+    function accountBalanceUpdate(){
+        const accounts = localStorage.getItem("accounts") || 0;
+        
+    }
+    accountBalanceUpdate();
     loadTotals();
     updateChart();
 }

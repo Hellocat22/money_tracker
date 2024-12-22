@@ -1,6 +1,7 @@
 function start() {
     const addTransactionButton = document.getElementById('add-transaction');
     const transactionHistory = document.getElementById('transaction-history');
+    const accounts = loadAccounts();
     let totalIncome = 0;
     let totalExpense = 0;
 
@@ -65,7 +66,6 @@ function start() {
     }
 
     function loadAccountList() {
-        const accounts = loadAccounts();
 
         // Helper function to create account options
         const createAccountOptions = (accounts) => {
@@ -153,9 +153,41 @@ function start() {
         const type = document.getElementById("transaction-type").value;
         const amount = parseInt(document.getElementById("amount").value);
         const dateInput = document.getElementById("transaction-date").value;
+        const accounts = loadAccounts();
 
         if (isNaN(amount) || amount <= 0 || !amount) {
             alert("Please enter a valid amount!");
+            return;
+        }
+        
+        let selectedAccount = null;
+        // Check account based on transaction type
+        if (type === "expense") {
+            selectedAccount = document.getElementById("expense-account").value;
+        }
+        else if (type === "income") {
+            selectedAccount = document.getElementById("income-account").value;
+        }
+        else if (type === "transfer") {
+            const fromAccount = document.getElementById("transfer-fromAccount").value;
+            const toAccount = document.getElementById("transfer-toAccount").value;
+
+            if (!fromAccount || !toAccount) {
+                alert("Please select both 'From' and 'To' accounts for a transfer!");
+                return;
+            }
+
+            if (fromAccount === toAccount) {
+                alert("The 'From' and 'To' accounts cannot be the same!");
+                return;
+            }
+
+            selectedAccount = fromAccount; // Assign fromAccount to allow validation below
+        }
+
+        // Ensure an account is selected
+        if (!selectedAccount) {
+            alert("Please select a valid account!");
             return;
         }
 
