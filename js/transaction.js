@@ -10,27 +10,33 @@ function start() {
     loadTransactionFields(); // Initial call to set up fields on load
     loadTransactionHistory(); // Initial load
 
-    // Reset form fields
+    // Reset all fields
     function resetFields() {
-        const type = document.getElementById("transaction-type").value;
-        
+        // Clear all inputs
         document.getElementById("amount").value = "";
         document.getElementById("transaction-date").value = "";
-
+    
+        // Hide all fields first
+        document.getElementById("expense-field").style.display = "none";
+        document.getElementById("income-field").style.display = "none";
+        document.getElementById("transfer-field").style.display = "none";
+    
+        // Show and reset fields based on the transaction type
+        const type = document.getElementById("transaction-type").value;
         if (type === "expense") {
-            document.getElementById("expense-field").style.display = "";
+            document.getElementById("expense-field").style.display = "block";
             document.getElementById("expense-account").value = "";
             document.getElementById("expense-tag").value = "";
             document.getElementById("expense-notes").value = "";
         }
         else if (type === "income") {
-            document.getElementById("income-field").style.display = "";
+            document.getElementById("income-field").style.display = "block";
             document.getElementById("income-account").value = "";
             document.getElementById("income-tag").value = "";
             document.getElementById("income-notes").value = "";
         }
         else if (type === "transfer") {
-            document.getElementById("transfer-field").style.display = "";
+            document.getElementById("transfer-field").style.display = "block";
             document.getElementById("transfer-fromAccount").value = "";
             document.getElementById("transfer-toAccount").value = "";
             document.getElementById("transfer-notes").value = "";

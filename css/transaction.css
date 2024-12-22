@@ -76,9 +76,7 @@ h3 {
 form {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(200, 200, 200);
     background-color: rgb(255, 255, 255);
-    padding: 20px;
 }
 
 form input,
@@ -164,7 +162,6 @@ form button:hover {
 /* Table Styling */
 table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
 }
 
@@ -184,4 +181,5 @@ td {
 
 .main-table {
     width: 60%;
+    margin-top: 20px;
 }
