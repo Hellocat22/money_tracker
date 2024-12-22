@@ -66,7 +66,7 @@ h2 {
     text-align: center;
 }
 
-h3{
+h3 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 18px;
@@ -80,6 +80,7 @@ form {
     border: 1px solid rgb(200, 200, 200);
     border-radius: 11px;
     background-color: rgb(255, 255, 255);
+    padding: 20px;
 }
 
 form input,
@@ -123,9 +124,10 @@ form button:hover {
     border: 1px solid rgb(200, 200, 200);
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
+    padding: 10px;
 }
 
-.transaction-history h3 {
+.history h3 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 18px;
@@ -175,12 +177,29 @@ form button:hover {
     margin-top: 10px;
 }
 
-table{
-    width: 1200px;
-    height: 600px;
+/* Table Styling */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
 }
 
 table, th, td {
-    border-style: solid;
-    border-collapse: collapse;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+th {
+    background-color: rgb(50, 200, 50);
+    color: white;
+}
+
+td {
+    text-align: left;
+}
+
+td form {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
 }

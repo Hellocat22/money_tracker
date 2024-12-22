@@ -2,16 +2,15 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    height: 100vh; /* Ensure full height of the screen */
     background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    justify-content: flex-start;
 }
 
 /* Logo Styling */
 .logo {
-    position: absolute;
+    position: absolute; /* Fix logo in place */
     top: -96px;
     left: 10px;
 }
@@ -37,51 +36,41 @@ body {
     padding: 20px 20px;
     cursor: pointer;
     background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .navbar li a {
     padding: 20px 20px;
-    cursor: pointer;
     background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration: none;
 }
 
-.navbar li:hover {
-    background-color: #388e3c;
-    color: white;
-}
-
+.navbar li:hover,
 .navbar li.active {
     background-color: #388e3c;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 /* Main Content Area */
 .main-content {
+    flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    padding-top: 20px;
-    width: 100%;
-    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 /* Total (Overview Section) */
 .total {
     flex: 1;
-    width: 600px;
-    height: auto;
     padding: 20px;
     text-align: justify;
-    border: solid 1px;
+    border: 1px solid rgb(200, 200, 200);
     border-radius: 10px;
     font-size: large;
-    background-color: #fff;
-    border-color: rgb(200, 200, 200);
+    background-color: rgb(255, 255, 255);
 }
 
 .total h3 {
@@ -91,12 +80,10 @@ body {
     color: rgb(50, 200, 50);
 }
 
-#total-income,
-#total-expense,
-#net-balance {
+.total-income,
+.total-expense,
+.net-balance {
     margin-top: 10px;
-    font-size: 16px;
-    color: #333;
 }
 
 /* Transaction History */
@@ -106,10 +93,10 @@ body {
     border: 1px solid rgb(200, 200, 200);
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
-    height: 600px;
+    padding: 10px;
 }
 
-.transaction-history h3 {
+.history h3 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 18px;
@@ -142,23 +129,52 @@ body {
     border-left: 10px solid rgb(50, 100, 240);
 }
 
-/* Chart Section */
-#chart-container {
-    flex: 2;
-    width: 600px;
-    max-height: 400px;
-    background-color: #fff;
-    padding: 20px;
-    border: solid 1px rgb(200, 200, 200);
-    border-radius: 10px;
-}
-
+/* Table Styling */
 table {
-    width: 1200px;
-    height: 600px;
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
 }
 
 table, th, td {
-    border-style: solid;
-    border-collapse: collapse;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+th {
+    background-color: rgb(50, 200, 50);
+    color: white;
+}
+
+td {
+    text-align: left;
+}
+
+td form {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .total,
+    .history,
+    #chart-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        max-width: none;
+    }
 }

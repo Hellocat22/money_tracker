@@ -51,9 +51,14 @@ function start() {
             const account = accounts[i];
             const accountHtml = `
                 <li>
-                    ${account.name} - $${account.balance} 
-                    <button onclick="editAccount(${account.id})">Edit</button>
-                    <button onclick="removeAccount(${account.id})">Remove</button>
+                    <div>
+                        <strong>${account.name}</strong><br>
+                        Balance: $${account.balance}
+                    </div>
+                    <div class="button-container">
+                        <button onclick="editAccount(${account.id})">Edit</button>
+                        <button onclick="removeAccount(${account.id})">Remove</button>
+                    </div>
                 </li>
             `;
 
