@@ -1,3 +1,4 @@
+/* General Body Styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,8 +8,10 @@ body {
     flex-direction: column;
     gap: 20px;
     justify-content: flex-start;
+    overflow: hidden;
 }
 
+/* Navbar Styling */
 .navbar ul {
     list-style-type: none;
     background-color: rgb(50, 200, 50);
@@ -43,6 +46,7 @@ body {
     color: white;
 }
 
+/* Main Content Area */
 .main-content {
     display: flex;
     justify-content: center;
@@ -54,21 +58,56 @@ body {
     margin: 0 auto;
 }
 
-#chart-container {
-    flex: 2;
-    width: 1000px;
-    height: 1000px;
+.logo {
+    position: absolute;
+    top: -96px;
+    left: 10px;
 }
 
+.logo img {
+    display: block;
+    padding-top: 100px;
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+}
+
+/* Total (Overview Section) */
 .total {
     flex: 1;
     width: 320px;
-    height: 150px;
+    height: auto;
     padding: 20px;
     text-align: justify;
     border: solid 1px;
     border-radius: 10px;
     font-size: large;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     border-color: rgb(200, 200, 200);
+}
+
+.total h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgb(50, 200, 50);
+}
+
+#total-income,
+#total-expense,
+#net-balance {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Chart Section */
+#chart-container {
+    flex: 2;
+    width: 600px;
+    max-height: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border: solid 1px rgb(200, 200, 200);
+    border-radius: 10px;
 }

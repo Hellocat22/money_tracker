@@ -8,62 +8,67 @@
     <link rel="icon" href="money.ico" type="image/x-icon">
 </head>
 <body>
+    <div class="logo">
+        <img src="./image/money.png" alt="Money Tracker Logo">
+    </div>
+    <!-- Navigation -->
     <nav class="navbar">
         <ul>
-            <li id="dashboard-tab"><a href='index.html'>Dashboard</a></li>
-            <li id="transaction-tab"><a href='transaction.html'>Transactions</a></li>
-            <li id="account-tab" class="active"><a href='account.html'>Accounts</a></li>
+            <li id="dashboard-tab"><a href="index.html">Dashboard</a></li>
+            <li id="transaction-tab"><a href="transaction.html">Transactions</a></li>
+            <li id="account-tab" class="active"><a href="account.html">Accounts</a></li>
         </ul>
     </nav>
-    <h2>Manage Accounts</h2>
-    <div class="account">
-        <form id="account-form">
-            <div class="add-account">
-                <label for="add-account">Add Account</label>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Manage Accounts</h2>
+
+        <!-- Account Section -->
+        <div class="account">
+            <!-- Account Form -->
+            <form id="account-form">
+                <div class="add-account">
+                    <label for="add-account">Add Account</label>
+                </div>
+
+                <div class="account-category">
+                    <label for="account-category">Account Category:</label>
+                    <select id="account-category">
+                        <option>Cash</option>
+                        <option>Bank Account</option>
+                        <option>Credit</option>
+                        <option>Savings</option>
+                    </select>
+                </div>
+
+                <div class="account-name">
+                    <label for="account-name">Name:</label>
+                    <input type="text" id="account-name" placeholder="Account Name">
+                </div>
+
+                <div class="form-action">
+                    <button type="button" id="add-account">Add Account</button>
+                </div>
+            </form>
+
+            <!-- Account List -->
+            <div id="account-list" class="account-list">
+                <div class="account-category-header">Cash</div>
+                <ul id="cash" class="cash"></ul>
+
+                <div class="account-category-header">Bank Account</div>
+                <ul id="bank-account" class="bank-account"></ul>
+
+                <div class="account-category-header">Credit</div>
+                <ul id="credit" class="credit"></ul>
+
+                <div class="account-category-header">Savings</div>
+                <ul id="savings" class="savings"></ul>
             </div>
-    
-            <div class="account-category">
-                <label for="account-category"> Account Category:</label>
-            </div>
-            
-            <select id="account-category">
-                <option>Cash</option>
-                <option>Bank Account</option>
-                <option>Credit</option>
-                <option>Savings</option>
-            </select>
-    
-            <div>
-                <label for="account-name">Name:</label>
-                <input type="text" id="account-name" placeholder="Account Name">
-            </div>
-    
-            <button type="button" id="add-account">Add Account</button>
-        </form>
-    
-        <div id="account-list" class="account-list">
-            <div>Cash</div>
-            <ul id="cash" class="cash">
-        
-            </ul>
-            
-            <div>Bank Account</div>
-            <ul id="bank-account" class="bank-account">
-        
-            </ul>
-        
-            <div>Credit</div>
-            <ul id="credit" class="credit">
-        
-            </ul>
-    
-            <div>Savings</div>
-            <ul id="savings" class="savings">
-        
-            </ul>
         </div>
-    </div>
-    
+    </main>
+
     <script src="./js/account.js"></script>
 </body>
 </html>

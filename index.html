@@ -9,6 +9,10 @@
     <link rel="icon" href="money.ico" type="image/x-icon">
 </head>
 <body>
+    <div class="logo">
+        <img src="./image/money.png" alt="Money Tracker Logo">
+    </div>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
             <li id="dashboard-tab" class="active"><a href='index.html'>Dashboard</a></li>
@@ -16,18 +20,33 @@
             <li id="account-tab"><a href='account.html'>Accounts</a></li>
         </ul>
     </nav>
-    <div class="main-content">
-        <div class="total">
-            <h3>Overview</h3>
-            <div id="total-income"></div>
-            <div id="total-expense"></div>
-            <div id="net-balance"></div>
-        </div>
-        <div id="chart-container">
-            <canvas id="income-expenses-chart"></canvas>
-        </div>
-    </div>
+
     
+    <!-- Main Content -->
+    <main class="main-content">
+        <table>
+            <tr>
+                <th>
+                    <h2 style="align-items: center;">Dashboard</h2>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <!-- Overview Section -->
+                    <div class="total">
+                        <h3>Overview</h3>
+                        <div id="total-income"></div>
+                        <div id="total-expense"></div>
+                        <div id="net-balance"></div>
+                    </div>
+                    <!-- Chart Section -->
+                    <div id="chart-container">
+                        <canvas id="income-expenses-chart"></canvas>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </main>
     
     <script src="./js/index.js"></script>
 </body>

@@ -1,12 +1,28 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     height: 100vh;
-    background-color: rgb(255, 255, 255); /* Updated background color */
+    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
 }
 
+.logo {
+    position: absolute;
+    top: -96px;
+    left: 10px;
+}
+
+.logo img {
+    display: block;
+    padding-top: 100px;
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+}
+
+/* Navbar */
 .navbar ul {
     list-style-type: none;
     background-color: rgb(50, 200, 50);
@@ -24,27 +40,33 @@ body {
 
 .navbar li a {
     padding: 20px 20px;
-    cursor: pointer;
     background-color: transparent;
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration: none;
 }
 
-.navbar li:hover {
-    background-color: #388e3c;
-    color: rgb(255, 255, 255);
-}
-
+.navbar li:hover,
 .navbar li.active {
     background-color: #388e3c;
     color: rgb(255, 255, 255);
 }
 
-h2 {
-    padding: 10px 100px 10px 100px;
+/* Main Section */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
+h2 {
+    padding: 10px 100px;
+    text-align: center;
+}
+
+/* Account Section */
 .account {
     display: flex;
     justify-content: center;
@@ -53,14 +75,25 @@ h2 {
     gap: 20px;
 }
 
+/* Account Form */
 form {
     display: flex;
     flex-direction: column;
-    border: 1px solid;
+    border: 1px solid rgb(200, 200, 200);
     border-radius: 11px;
     width: 80%;
     background-color: rgb(255, 255, 255);
-    border-color: rgb(200, 200, 200);
+}
+
+.add-account {
+    background-color: rgb(200, 200, 200);
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+.account-category {
+    display: flex;
+    flex-direction: column;
 }
 
 form input,
@@ -88,25 +121,14 @@ form button:hover {
     background-color: #45a049;
 }
 
-.add-account {
-    background-color: rgb(200, 200, 200);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.account-category {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Account List */
 .account-list {
     flex: 2;
     text-align: left;
-    border: solid 1px;
+    border: 1px solid rgb(200, 200, 200);
     width: 80%;
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
-    border-color: rgb(200, 200, 200);
 }
 
 .account-list div {
@@ -130,4 +152,13 @@ form button:hover {
     border-left: 10px solid rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
+}
+
+/* Wrapper Section */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 0 20px;
 }

@@ -8,92 +8,120 @@
     <link rel="icon" href="money.ico" type="image/x-icon">
 </head>
 <body>
+    <div class="logo">
+        <img src="./image/money.png" alt="Money Tracker Logo">
+    </div>
+    <!-- Navigation -->
     <nav class="navbar">
         <ul>
-            <li id="dashboard-tab"><a href='index.html'>Dashboard</a></li>
-            <li id="transaction-tab" class="active"><a href='transaction.html'>Transactions</a></li>
-            <li id="account-tab"><a href='account.html'>Accounts</a></li>
+            <li id="dashboard-tab"><a href="index.html">Dashboard</a></li>
+            <li id="transaction-tab" class="active"><a href="transaction.html">Transactions</a></li>
+            <li id="account-tab"><a href="account.html">Accounts</a></li>
         </ul>
     </nav>
-    <h2>Manage Transactions</h2>
-    <div class="transaction">
-        <form id="transaction-form">
-            <div class="transaction-type">
-                <label for="transaction-type">Add Transaction</label>
-            </div>
 
-            <select id="transaction-type">
-                <option value="expense">Expense</option>
-                <option value="income">Income</option>
-                <option value="transfer">Transfer (not implemented yet)</option>
-            </select>
+    <!-- Main Content -->
+    <main>
+        <h2>Manage Transactions</h2>
 
-            <div id="expense-field" style="display: none;">
-                <label for="expense-account">Account:</label>
-                <select id="expense-account">
-                    <!-- Accounts will be populated here -->
-                </select>
-
-                <label for="expense-tag">Tag:</label>
-                <input type="text" id="expense-tag" placeholder="Expense Tag">
-
-                <label for="expense-notes">Notes:</label>
-                <input type="text" id="expense-notes" placeholder="Notes">
-            </div>
-
-            <div id="income-field" style="display: none;">
-                <label for="income-account">Account:</label>
-                <select id="income-account">
-                    <!-- Accounts will be populated here -->
-                </select>
-
-                <label for="income-tag">Tag:</label>
-                <input type="text" id="income-tag" placeholder="Income Tag">
-
-                <label for="income-notes">Notes:</label>
-                <input type="text" id="income-notes" placeholder="Notes">
-            </div>
-
-            <div id="transfer-field" style="display: none;">
-                <label for="transfer-fromAccount">From:</label>
-                <select id="transfer-fromAccount">
-                    <!-- Accounts will be populated here -->
-                </select>
-
-                <label for="transfer-toAccount">To:</label>
-                <select id="transfer-toAccount">
-                    <!-- Accounts will be populated here -->
-                </select>
-
-                <label for="transfer-notes">Notes:</label>
-                <input type="text" id="transfer-notes" placeholder="Notes">
-            </div>
-
-            <label for="amount"> Amount:</label>
-            <input type="number" id="amount" placeholder="Amount">
-
-            <label for="transaction-date">Set custom date (if necessary):</label>
-            <input type="date" id="transaction-date">
-
-
-            <button type="button" id="add-transaction">Add Transaction</button>
-        </form>
-        <div class = "wrapper">
-            <div id="history" class="history">
-                <div class="transaction-history">
-                    <label for="transaction-history">Transaction History</label>
+        <!-- Transaction Section -->
+        <div class="transaction">
+            <!-- Transaction Form -->
+            <form id="transaction-form">
+                <div class="transaction-label">
+                    <h3>Add Transaction</h3>
                 </div>
-                <ul id="transaction-history">
-                    
-                </ul>
-            </div>
-            <div id="total" class="total">
-                <div id="total-income" class="total-income"></div>
-                <div id="total-expense" class="total-expense"></div>
-                <div id="net-balance" class="net-balance"></div>
+
+                <!-- Transaction Type Selection -->
+                <select id="transaction-type" class="transaction-type">
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                    <option value="transfer">Transfer (not implemented yet)</option>
+                </select>
+
+                <!-- Transaction Fields -->
+                <div class="transaction-field">
+                    <!-- Expense Fields -->
+                    <div id="expense-field" style="display: none;">
+                        <label for="expense-account">Account:
+                            <select id="expense-account">
+                                <!-- Accounts will be populated here -->
+                            </select>
+                        </label>
+                        <label for="expense-tag">Tag:
+                            <input type="text" id="expense-tag" placeholder="Expense Tag">
+                        </label>
+                        <label for="expense-notes">Notes:
+                            <input type="text" id="expense-notes" placeholder="Notes">
+                        </label>
+                    </div>
+
+                    <!-- Income Fields -->
+                    <div id="income-field" style="display: none;">
+                        <label for="income-account">Account:
+                            <select id="income-account">
+                                <!-- Accounts will be populated here -->
+                            </select>
+                        </label>
+                        <label for="income-tag">Tag:
+                            <input type="text" id="income-tag" placeholder="Income Tag">
+                        </label>
+                        <label for="income-notes">Notes:
+                            <input type="text" id="income-notes" placeholder="Notes">
+                        </label>
+                    </div>
+
+                    <!-- Transfer Fields -->
+                    <div id="transfer-field" style="display: none;">
+                        <label for="transfer-fromAccount">From:</label>
+                        <select id="transfer-fromAccount">
+                            <!-- Accounts will be populated here -->
+                        </select>
+
+                        <label for="transfer-toAccount">To:</label>
+                        <select id="transfer-toAccount">
+                            <!-- Accounts will be populated here -->
+                        </select>
+
+                        <label for="transfer-notes">Notes:
+                            <input type="text" id="transfer-notes" placeholder="Notes">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Common Transaction Fields -->
+                <label for="amount">Amount:
+                    <input type="number" id="amount" placeholder="Amount">
+                </label>
+
+                <label for="transaction-date">Set custom date (if necessary):
+                    <input type="date" id="transaction-date">
+                </label>
+
+                <button type="button" id="add-transaction">Add Transaction</button>
+            </form>
+
+            <!-- Wrapper Section -->
+            <div class="wrapper">
+                <!-- Transaction History -->
+                <div id="history" class="history">
+                    <div class="transaction-history">
+                        <h3>Transaction History</h3>
+                    </div>
+                    <ul id="transaction-history">
+                        <!-- Transaction history will populate here -->
+                    </ul>
+                </div>
+
+                <!-- Totals -->
+                <div id="total" class="total">
+                    <div id="total-income" class="total-income"></div>
+                    <div id="total-expense" class="total-expense"></div>
+                    <div id="net-balance" class="net-balance"></div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script src="./js/transaction.js"></script>
 </body>
