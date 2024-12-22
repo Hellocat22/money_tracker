@@ -75,6 +75,7 @@ h3 {
 /* Transaction Form */
 form {
     display: flex;
+    width: 80%;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
 }
@@ -106,6 +107,9 @@ form button:hover {
 .history {
     flex: 2;
     text-align: left;
+    overflow-y: auto;
+    height: 300px;
+    width: 300px;
     border: 1px solid rgb(200, 200, 200);
     background-color: rgb(255, 255, 255);
     padding: 10px;
