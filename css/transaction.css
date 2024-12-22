@@ -66,13 +66,11 @@ h2 {
     text-align: center;
 }
 
-/* Transaction Section */
-.transaction {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
+h3{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgb(50, 200, 50);
 }
 
 /* Transaction Form */
@@ -82,13 +80,6 @@ form {
     border: 1px solid rgb(200, 200, 200);
     border-radius: 11px;
     background-color: rgb(255, 255, 255);
-}
-
-.transaction-label h3{
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: rgb(50, 200, 50);
 }
 
 form input,
@@ -182,4 +173,14 @@ form button:hover {
 .total-expense,
 .net-balance {
     margin-top: 10px;
+}
+
+table{
+    width: 1200px;
+    height: 600px;
+}
+
+table, th, td {
+    border-style: solid;
+    border-collapse: collapse;
 }

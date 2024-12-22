@@ -62,13 +62,45 @@ function start() {
             }
         });
     }
-    function accountBalanceUpdate(){
-        const accounts = localStorage.getItem("accounts") || 0;
-        
+    function loadTransactionHistory() {
+        const transactionHistory = document.getElementById("transaction-history");
+        transactionHistory.innerHTML = ""; // Clear the existing list
+        const transactions = [];
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (!isNaN(key)) {
+                const transaction = JSON.parse(localStorage.getItem(key));
+                transactions.push(transaction);
+            }
+        }
+
+        // Sort transactions by date and timestamp
+        transactions.sort((a, b) => {
+            const dateA = new Date(a.date).getTime();
+            const dateB = new Date(b.date).getTime();
+            return dateB - dateA || b.timestamp - a.timestamp;
+        });
+
+        // Populate transaction history
+        transactions.forEach((transaction) => {
+            transactionHistory.innerHTML += `
+                <li class="${transaction.type}">
+                    <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount}<br>
+                    Date: ${transaction.date}<br>
+                    ${transaction.details || ""}
+                </li>
+            `;
+        });
     }
-    accountBalanceUpdate();
+
+    function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     loadTotals();
     updateChart();
+    loadTransactionHistory();
 }
 
 window.addEventListener('load', start, false);

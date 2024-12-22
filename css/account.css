@@ -66,13 +66,11 @@ h2 {
     text-align: center;
 }
 
-/* Account Section */
-.account {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
+h3{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgb(50, 200, 50);
 }
 
 /* Account Form */
@@ -83,12 +81,6 @@ form {
     border-radius: 11px;
     width: 80%;
     background-color: rgb(255, 255, 255);
-}
-
-.add-account {
-    background-color: rgb(200, 200, 200);
-    padding: 20px;
-    border-radius: 10px 10px 0 0;
 }
 
 .account-category {
@@ -161,4 +153,14 @@ form button:hover {
     gap: 20px;
     width: 100%;
     padding: 0 20px;
+}
+
+table {
+    width: 1200px;
+    height: 600px;
+}
+
+table, th, td {
+    border-style: solid;
+    border-collapse: collapse;
 }

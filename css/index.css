@@ -70,14 +70,10 @@ body {
     margin: 0 auto;
 }
 
-.main-content table, th, td {
-    border-style: solid;
-}
-
 /* Total (Overview Section) */
 .total {
     flex: 1;
-    width: 320px;
+    width: 600px;
     height: auto;
     padding: 20px;
     text-align: justify;
@@ -103,6 +99,49 @@ body {
     color: #333;
 }
 
+/* Transaction History */
+.history {
+    flex: 2;
+    text-align: left;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    height: 600px;
+}
+
+.transaction-history h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgb(50, 200, 50);
+}
+
+.history ul {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.history li {
+    padding: 10px;
+    background-color: rgb(245, 245, 245);
+    border-left: 10px solid rgb(50, 200, 50);
+    display: flex;
+    justify-content: space-between;
+}
+
+.history li.expense {
+    border-left: 10px solid rgb(240, 50, 50);
+}
+
+.history li.income {
+    border-left: 10px solid rgb(50, 200, 50);
+}
+
+.history li.transfer {
+    border-left: 10px solid rgb(50, 100, 240);
+}
+
 /* Chart Section */
 #chart-container {
     flex: 2;
@@ -112,4 +151,14 @@ body {
     padding: 20px;
     border: solid 1px rgb(200, 200, 200);
     border-radius: 10px;
+}
+
+table {
+    width: 1200px;
+    height: 600px;
+}
+
+table, th, td {
+    border-style: solid;
+    border-collapse: collapse;
 }

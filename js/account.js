@@ -90,7 +90,7 @@ function start() {
             if (account.id === id) {
                 const newBalance = prompt("Enter the new balance for " + account.name, account.balance);
                 const parsedBalance = parseInt(newBalance);
-                
+
                 if (!isNaN(parsedBalance) && parsedBalance >= 0) {
                     account.balance = parsedBalance;
                     localStorage.setItem('accounts', JSON.stringify(accounts));
