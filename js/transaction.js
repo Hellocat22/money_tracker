@@ -5,8 +5,58 @@ function start() {
     let totalExpense = 0;
 
     // Show/Hide fields based on transaction type
-    document.getElementById("transaction-type").addEventListener("change", showTransactionFields);
-    showTransactionFields(); // Initial call to set up fields on load
+    document.getElementById("transaction-type").addEventListener("change", loadTransactionFields);
+    loadTransactionFields(); // Initial call to set up fields on load
+    loadTransactionHistory(); // Initial load
+
+    function loadTransactionFields() {
+        const type = document.getElementById("transaction-type").value;
+        loadAccountList(); // Populate account fields every time transaction type is changed
+    
+        if (type === "expense") {
+            document.getElementById("expense-field").style.display = "block";
+            document.getElementById("income-field").style.display = "none";
+            document.getElementById("transfer-field").style.display = "none";
+        }
+        else if (type === "income") {
+            document.getElementById("expense-field").style.display = "none";
+            document.getElementById("income-field").style.display = "block";
+            document.getElementById("transfer-field").style.display = "none";
+        }
+        else if (type === "transfer") {
+            document.getElementById("expense-field").style.display = "none";
+            document.getElementById("income-field").style.display = "none";
+            document.getElementById("transfer-field").style.display = "block";
+        }
+    }
+
+    // Reset form fields
+    function resetFields() {
+        const type = document.getElementById("transaction-type").value;
+        
+        document.getElementById("amount").value = "";
+        document.getElementById("transaction-date").value = "";
+
+        if (type === "expense") {
+            document.getElementById("expense-field").style.display = "";
+            document.getElementById("expense-account").value = "";
+            document.getElementById("expense-tag").value = "";
+            document.getElementById("expense-notes").value = "";
+        }
+        else if (type === "income") {
+            document.getElementById("income-field").style.display = "";
+            document.getElementById("income-account").value = "";
+            document.getElementById("income-tag").value = "";
+            document.getElementById("income-notes").value = "";
+        }
+        else if (type === "transfer") {
+            document.getElementById("transfer-field").style.display = "";
+            document.getElementById("transfer-fromAccount").value = "";
+            document.getElementById("transfer-toAccount").value = "";
+            document.getElementById("transfer-notes").value = "";
+        }
+        loadTransactionFields();
+    }
 
     // Load accounts from localStorage
     function loadAccounts() {
@@ -32,71 +82,6 @@ function start() {
          document.getElementById('transfer-fromAccount').innerHTML = createAccountOptions(accounts);
          document.getElementById('transfer-toAccount').innerHTML = createAccountOptions(accounts);
     }
-
-    function showTransactionFields() {
-        const type = document.getElementById("transaction-type").value;
-        loadAccountList(); // Populate account fields every time transaction type is changed
-    
-        if (type === "expense") {
-            document.getElementById("expense-field").style.display = "block";
-            document.getElementById("income-field").style.display = "none";
-            document.getElementById("transfer-field").style.display = "none";
-        }
-        else if (type === "income") {
-            document.getElementById("expense-field").style.display = "none";
-            document.getElementById("income-field").style.display = "block";
-            document.getElementById("transfer-field").style.display = "none";
-        }
-        else if (type === "transfer") {
-            document.getElementById("expense-field").style.display = "none";
-            document.getElementById("income-field").style.display = "none";
-            document.getElementById("transfer-field").style.display = "block";
-        }
-    }
-
-    // Add transaction
-    addTransactionButton.addEventListener("click", function () {
-        const type = document.getElementById("transaction-type").value;
-        const amount = parseFloat(document.getElementById("amount").value);
-        const dateInput = document.getElementById("transaction-date").value;
-
-        if (isNaN(amount) || amount <= 0 || !amount) {
-            alert("Please enter a valid amount!");
-            return;
-        }
-
-        const date = dateInput ? dateInput : new Date().toISOString().split("T")[0];
-
-        let details = '';
-        if (type === "expense") {
-            const account = document.getElementById("expense-account").value;
-            const tag = document.getElementById("expense-tag").value;
-            const notes = document.getElementById("expense-notes").value;
-            details = `Account: ${account} || Tag: ${tag} || Notes: ${notes}`;
-            totalExpense += amount;
-        }
-        else if (type === "income") {
-            const account = document.getElementById("income-account").value;
-            const tag = document.getElementById("income-tag").value;
-            const notes = document.getElementById("income-notes").value;
-            details = `Account: ${account} || Tag: ${tag} || Notes: ${notes}`;
-            totalIncome += amount;
-        }
-        else if (type === "transfer") {
-            const fromAccount = document.getElementById("transfer-fromAccount").value;
-            const toAccount = document.getElementById("transfer-toAccount").value;
-            const notes = document.getElementById("transfer-notes").value;
-            details = `From: ${fromAccount} || To: ${toAccount} || Notes: ${notes}`;
-        }
-
-        const timestamp = new Date().getTime();
-        const transaction = { type, amount, date, details, timestamp };
-        localStorage.setItem(timestamp, JSON.stringify(transaction));
-
-        loadTransactionHistory();
-        updateTotals();
-        resetFields();
-    });
 
     // Load transaction history
     function loadTransactionHistory() {
@@ -143,8 +128,15 @@ function start() {
             if (transaction.type === "income") totalIncome += transaction.amount;
             if (transaction.type === "expense") totalExpense += transaction.amount;
 
-            // Append transaction as a string to the innerHTML
-            transactionHistory.innerHTML += `
+            // Call appendTransactionHistory function and append as a string to the innerHTML
+            appendTransactionHistory(transaction);
+        }
+
+        updateTotals();
+    }
+
+    function appendTransactionHistory(transaction) {
+        transactionHistory.innerHTML += `
                 <li class="${transaction.type}">
                     <div>
                         <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount}<br>
@@ -154,10 +146,94 @@ function start() {
                     <button onclick="removeTransaction('${transaction.timestamp}')">Remove</button>
                 </li>
             `;
+    }
+
+    // Add transaction
+    addTransactionButton.addEventListener("click", function () {
+        const type = document.getElementById("transaction-type").value;
+        const amount = parseInt(document.getElementById("amount").value);
+        const dateInput = document.getElementById("transaction-date").value;
+
+        if (isNaN(amount) || amount <= 0 || !amount) {
+            alert("Please enter a valid amount!");
+            return;
         }
 
+        const date = dateInput ? dateInput : new Date().toISOString().split("T")[0];
+
+        let details = '';
+        if (type === "expense") {
+            const account = document.getElementById("expense-account").value;
+            const tag = document.getElementById("expense-tag").value;
+            const notes = document.getElementById("expense-notes").value;
+            details = `Account: ${account} || Tag: ${tag} || Notes: ${notes}`;
+            
+            const accounts = loadAccounts();
+            const accountObj = accounts.find(acc => acc.name === account);
+            if (accountObj) {
+                accountObj.balance -= amount; // Subtract the expense amount
+                localStorage.setItem('accounts', JSON.stringify(accounts));
+            }
+
+            totalExpense += amount;
+        }
+        else if (type === "income") {
+            const account = document.getElementById("income-account").value;
+            const tag = document.getElementById("income-tag").value;
+            const notes = document.getElementById("income-notes").value;
+            details = `Account: ${account} || Tag: ${tag} || Notes: ${notes}`;
+            
+            const accounts = loadAccounts();
+            const accountObj = accounts.find(acc => acc.name === account);
+            if (accountObj) {
+                accountObj.balance += amount; // Add the income amount
+                localStorage.setItem('accounts', JSON.stringify(accounts));
+            }
+
+            totalIncome += amount;
+        }
+        else if (type === "transfer") {
+            const fromAccount = document.getElementById("transfer-fromAccount").value;
+            const toAccount = document.getElementById("transfer-toAccount").value;
+            const notes = document.getElementById("transfer-notes").value;
+            details = `From: ${fromAccount} || To: ${toAccount} || Notes: ${notes}`;
+
+            const accounts = loadAccounts();
+            let fromAccountObj = null;
+            let toAccountObj = null;
+
+            // Find fromAccount and toAccount object
+            for (let i = 0; i < accounts.length; i++) {
+                if (accounts[i].name === fromAccount) {
+                    fromAccountObj = accounts[i];
+                }
+                if (accounts[i].name === toAccount) {
+                    toAccountObj = accounts[i];
+                }
+            }
+            if (fromAccountObj && toAccountObj) {
+                fromAccountObj.balance -= amount;
+                toAccountObj.balance += amount;
+
+                localStorage.setItem('accounts', JSON.stringify(accounts));
+            }
+            else {
+                alert("Invalid account for the transfer");
+                return;
+            }
+
+            totalIncome = 0;
+            totalExpense = 0;
+        }
+
+        const timestamp = new Date().getTime();
+        const transaction = { type, amount, date, details, timestamp };
+        localStorage.setItem(timestamp, JSON.stringify(transaction));
+
+        loadTransactionHistory();
         updateTotals();
-    }
+        resetFields();
+    });
 
     // Update totals
     function updateTotals() {
@@ -169,34 +245,6 @@ function start() {
         localStorage.setItem("totalIncome", totalIncome);
         localStorage.setItem("totalExpense", totalExpense);
         localStorage.setItem("netBalance", netBalance);
-    }
-
-    // Reset form fields
-    function resetFields() {
-        const type = document.getElementById("transaction-type").value;
-        
-        document.getElementById("amount").value = "";
-        document.getElementById("transaction-date").value = "";
-
-        if (type === "expense") {
-            document.getElementById("expense-field").style.display = "";
-            document.getElementById("expense-account").value = "";
-            document.getElementById("expense-tag").value = "";
-            document.getElementById("expense-notes").value = "";
-        }
-        else if (type === "income") {
-            document.getElementById("income-field").style.display = "";
-            document.getElementById("income-account").value = "";
-            document.getElementById("income-tag").value = "";
-            document.getElementById("income-notes").value = "";
-        }
-        else if (type === "transfer") {
-            document.getElementById("transfer-field").style.display = "";
-            document.getElementById("transfer-fromAccount").value = "";
-            document.getElementById("transfer-toAccount").value = "";
-            document.getElementById("transfer-notes").value = "";
-        }
-        showTransactionFields();
     }
 
     // Remove a single transaction
@@ -220,9 +268,6 @@ function start() {
     function capitalize(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
-
-    // Initial load
-    loadTransactionHistory();
 }
 
 window.addEventListener('load', start, false);

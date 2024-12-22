@@ -2,11 +2,13 @@ function start() {
     const addAccountButton = document.getElementById('add-account');
     const accountCategory = document.getElementById('account-category');
     const accountName = document.getElementById('account-name');
+    const accountBalance = document.getElementById('account-balance');
 
     // Add Account
     addAccountButton.addEventListener('click', function () {
         const category = accountCategory.value.trim(); // Remove unnecessary whitespaces
         const name = accountName.value.trim();
+        const balance = parseInt(accountBalance.value.trim()) || 0;
 
         if (!name) {
             alert('Please enter a valid account name!');
@@ -17,6 +19,7 @@ function start() {
         const account = {
             category,
             name,
+            balance,
             id: Date.now() // Unique ID based on timestamp
         };
 
@@ -27,6 +30,7 @@ function start() {
 
         // Reset the input fields
         accountName.value = '';
+        accountBalance.value = '';
 
         // Reload the account lists
         loadAccounts();
@@ -47,7 +51,8 @@ function start() {
             const account = accounts[i];
             const accountHtml = `
                 <li>
-                    ${account.name}
+                    ${account.name} - $${account.balance} 
+                    <button onclick="editAccount(${account.id})">Edit</button>
                     <button onclick="removeAccount(${account.id})">Remove</button>
                 </li>
             `;
@@ -72,6 +77,33 @@ function start() {
         document.getElementById('credit').innerHTML = creditHtml;
         document.getElementById('savings').innerHTML = savingsHtml;
     }
+
+    // Edit an account's balance
+    window.editAccount = function (id) {
+        let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+        
+        // Iterate over the accounts array
+        for (let i = 0; i < accounts.length; i++) {
+            const account = accounts[i];
+            
+            // Check if the current account has the matching ID
+            if (account.id === id) {
+                const newBalance = prompt("Enter the new balance for " + account.name, account.balance);
+                const parsedBalance = parseInt(newBalance);
+                
+                if (!isNaN(parsedBalance) && parsedBalance >= 0) {
+                    account.balance = parsedBalance;
+                    localStorage.setItem('accounts', JSON.stringify(accounts));
+    
+                    loadAccounts();
+                }
+                else {
+                    alert("Please enter a valid balance.");
+                }
+                break;
+            }
+        }
+    };
 
     // Remove an account
     window.removeAccount = function (id) {
