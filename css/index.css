@@ -131,7 +131,24 @@ td {
     text-align: left;
 }
 
+h2 {
+    padding: 10px 100px;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgb(50, 200, 50);
+}
+
 .main-table {
     width: 60%;
     margin-top: 20px;
+}
+
+canvas {
+    background-color: white;
+    border: 1px solid rgb(200, 200, 200);
 }

@@ -163,3 +163,12 @@ td {
     width: 60%;
     margin-top: 20px;
 }
+
+.input-account {
+    width: 100%; /* Adjust this value as needed */
+    max-width: 100%; /* Prevent the select from exceeding its container */
+    overflow: hidden; /* Hide any overflow text */
+    text-overflow: ellipsis; /* Add ellipsis if the text is too long */
+    white-space: nowrap; /* Prevent wrapping of text inside the select */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+}

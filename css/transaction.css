@@ -75,9 +75,10 @@ h3 {
 /* Transaction Form */
 form {
     display: flex;
-    width: 80%;
+    width: 100%;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(200, 200, 200);
 }
 
 form input,
@@ -109,7 +110,6 @@ form button:hover {
     text-align: left;
     overflow-y: auto;
     height: 300px;
-    width: 300px;
     border: 1px solid rgb(200, 200, 200);
     background-color: rgb(255, 255, 255);
     padding: 10px;
@@ -150,7 +150,8 @@ form button:hover {
 /* Transaction Overview */
 .total {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
+    height: 300px;
     text-align: justify;
     border: 1px solid rgb(200, 200, 200);
     font-size: large;
@@ -170,8 +171,9 @@ table {
 }
 
 table, th, td {
-    border: 1px solid rgb(200, 200, 200);
     padding: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    box-sizing: border-box;
 }
 
 th {
@@ -186,4 +188,19 @@ td {
 .main-table {
     width: 60%;
     margin-top: 20px;
+}
+
+select {
+    width: 150px; /* Adjust this value as needed */
+    max-width: 100%; /* Prevent the select from exceeding its container */
+    overflow: hidden; /* Hide any overflow text */
+    text-overflow: ellipsis; /* Add ellipsis if the text is too long */
+    white-space: nowrap; /* Prevent wrapping of text inside the select */
+}
+
+.transaction-type, .input-colspan4 {
+    width: 100%;
+    max-width: 100%; /* Ensure it doesn't exceed the table cell's width */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    overflow: hidden; /* Hide overflow if text is too long */
 }

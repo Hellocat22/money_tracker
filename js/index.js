@@ -86,9 +86,11 @@ function start() {
         transactions.forEach((transaction) => {
             transactionHistory.innerHTML += `
                 <li class="${transaction.type}">
+                <div>
                     <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount}<br>
                     Date: ${transaction.date}<br>
                     ${transaction.details || ""}
+                </div>
                 </li>
             `;
         });

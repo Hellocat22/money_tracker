@@ -58,11 +58,11 @@
                             </tr>
 
                             <!-- Expense Fields -->
-                            <tr id="expense-field" style="display: none;">
-                                <td>
+                            <tr id="expense-account-field" style="display: none;">
+                                <td >
                                     <label for="expense-account">Account:</label>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <select id="expense-account">
                                         <!-- Accounts will be populated here -->
                                     </select>
@@ -70,17 +70,16 @@
                                 <td>
                                     <label for="expense-tag">Tag:</label>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <input type="text" id="expense-tag" placeholder="Expense Tag">
                                 </td>
                                 <td>
                                     <label for="expense-notes">Notes:</label>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <input type="text" id="expense-notes" placeholder="Notes">
                                 </td>
                             </tr>
-
                             <!-- Income Fields -->
                             <tr id="income-field" style="display: none;">
                                 <td>
@@ -107,26 +106,26 @@
 
                             <!-- Transfer Fields -->
                             <tr id="transfer-field" style="display: none;">
-                                <td>
+                                <td colspan="1">
                                     <label for="transfer-fromAccount">From:</label>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <select id="transfer-fromAccount">
                                         <!-- Accounts will be populated here -->
                                     </select>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <label for="transfer-toAccount">To:</label>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <select id="transfer-toAccount">
                                         <!-- Accounts will be populated here -->
                                     </select>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <label for="transfer-notes">Notes:</label>
                                 </td>
-                                <td>
+                                <td colspan="1">
                                     <input type="text" id="transfer-notes" placeholder="Notes">
                                 </td>
                             </tr>
@@ -137,7 +136,7 @@
                                     <label for="amount">Amount:</label>
                                 </td>
                                 <td colspan="4">
-                                    <input type="number" id="amount" placeholder="Amount">
+                                    <input type="number" id="amount" placeholder="Amount" class="input-colspan4">
                                 </td>
                             </tr>
                             <tr>
@@ -145,11 +144,11 @@
                                     <label for="transaction-date">Set custom date (if necessary):</label>
                                 </td>
                                 <td colspan="4">
-                                    <input type="date" id="transaction-date">
+                                    <input type="date" id="transaction-date" class="input-colspan4">
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="form-action">
+                                <td colspan="6" class="form-action" class="input-colspan4">
                                     <button type="button" id="add-transaction">Add Transaction</button>
                                 </td>
                             </tr>

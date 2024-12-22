@@ -17,26 +17,26 @@ function start() {
         document.getElementById("transaction-date").value = "";
     
         // Hide all fields first
-        document.getElementById("expense-field").style.display = "none";
+        document.getElementById("expense-account-field").style.display = "none";
         document.getElementById("income-field").style.display = "none";
         document.getElementById("transfer-field").style.display = "none";
     
         // Show and reset fields based on the transaction type
         const type = document.getElementById("transaction-type").value;
         if (type === "expense") {
-            document.getElementById("expense-field").style.display = "block";
+            document.getElementById("expense-account-field").style.display = "table-row";
             document.getElementById("expense-account").value = "";
             document.getElementById("expense-tag").value = "";
             document.getElementById("expense-notes").value = "";
         }
         else if (type === "income") {
-            document.getElementById("income-field").style.display = "block";
+            document.getElementById("income-field").style.display = "table-row";
             document.getElementById("income-account").value = "";
             document.getElementById("income-tag").value = "";
             document.getElementById("income-notes").value = "";
         }
         else if (type === "transfer") {
-            document.getElementById("transfer-field").style.display = "block";
+            document.getElementById("transfer-field").style.display = "table-row";
             document.getElementById("transfer-fromAccount").value = "";
             document.getElementById("transfer-toAccount").value = "";
             document.getElementById("transfer-notes").value = "";
@@ -50,19 +50,19 @@ function start() {
         loadAccountList(); // Populate account fields every time transaction type is changed
     
         if (type === "expense") {
-            document.getElementById("expense-field").style.display = "block";
+            document.getElementById("expense-account-field").style.display = "table-row";
             document.getElementById("income-field").style.display = "none";
             document.getElementById("transfer-field").style.display = "none";
         }
         else if (type === "income") {
-            document.getElementById("expense-field").style.display = "none";
-            document.getElementById("income-field").style.display = "block";
+            document.getElementById("expense-account-field").style.display = "none";
+            document.getElementById("income-field").style.display = "table-row";
             document.getElementById("transfer-field").style.display = "none";
         }
         else if (type === "transfer") {
-            document.getElementById("expense-field").style.display = "none";
+            document.getElementById("expense-account-field").style.display = "none";
             document.getElementById("income-field").style.display = "none";
-            document.getElementById("transfer-field").style.display = "block";
+            document.getElementById("transfer-field").style.display = "table-row";
         }
     }
 
