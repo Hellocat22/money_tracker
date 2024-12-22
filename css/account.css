@@ -129,7 +129,6 @@ form button:hover {
     border: solid 1px;
     border-color: rgb(200, 200, 200);
     display: block;
-    border-bottom: none;
 }
 
 .account-list li {
