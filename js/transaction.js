@@ -5,23 +5,21 @@ function start() {
     let totalIncome = 0;
     let totalExpense = 0;
 
-    // Show/Hide fields based on transaction type
     document.getElementById("transaction-type").addEventListener("change", loadTransactionFields);
-    loadTransactionFields(); // Initial call to set up fields on load
-    loadTransactionHistory(); // Initial load
+    loadTransactionFields(); 
+    loadTransactionHistory(); 
 
-    // Reset all fields
     function resetFields() {
-        // Clear all inputs
+        // Clear inputs
         document.getElementById("amount").value = "";
         document.getElementById("transaction-date").value = "";
     
-        // Hide all fields first
+        // Hide first
         document.getElementById("expense-account-field").style.display = "none";
         document.getElementById("income-field").style.display = "none";
         document.getElementById("transfer-field").style.display = "none";
     
-        // Show and reset fields based on the transaction type
+        // Show and reset fields based on type
         const type = document.getElementById("transaction-type").value;
         if (type === "expense") {
             document.getElementById("expense-account-field").style.display = "table-row";
@@ -47,7 +45,7 @@ function start() {
 
     function loadTransactionFields() {
         const type = document.getElementById("transaction-type").value;
-        loadAccountList(); // Populate account fields every time transaction type is changed
+        loadAccountList(); // Refill account fields every time transaction type is changed
     
         if (type === "expense") {
             document.getElementById("expense-account-field").style.display = "table-row";
@@ -66,15 +64,12 @@ function start() {
         }
     }
 
-    // Load accounts from localStorage
     function loadAccounts() {
-        const accounts = JSON.parse(localStorage.getItem('accounts')) || []; // Get accounts if there is any else get NULL
+        const accounts = JSON.parse(localStorage.getItem('accounts')) || []; // else = NULL
         return accounts;
     }
 
     function loadAccountList() {
-
-        // Helper function to create account options
         const createAccountOptions = (accounts) => {
             let optionsHtml = '';
             for (let i = 0; i < accounts.length; i++) {
@@ -90,30 +85,26 @@ function start() {
          document.getElementById('transfer-toAccount').innerHTML = createAccountOptions(accounts);
     }
 
-    // Load transaction history
     function loadTransactionHistory() {
         transactionHistory.innerHTML = '';
         const transactions = [];
 
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
-            // Check if the key is a valid number (timestamp)
-            // localStorage.key(i) returns the key as a string, even if it's a numeric timestamp. 
-            // !isNaN(key) ensures that the key can be interpreted as a valid number (timestamp) 
-            // before processing it as a transaction. This avoids mistakenly processing 
-            // non-numeric keys (such as "user-preference" or "settings") that aren't related 
-            // to transactions.
+            /* Check if the key is a valid number (timestamp) localStorage.key(i) returns the key as a string, 
+            even if it's a numeric timestamp. !isNaN(key) ensures that the key can be interpreted as a validnumber (timestamp) 
+            before processing it as a transaction. This avoids mistakenly processing non-numeric keys
+            (such as "user-preference" or "settings") that aren't related to transactions.*/
             if (!isNaN(key)) {
                 const data = JSON.parse(localStorage.getItem(key));
                 transactions.push(data);
             }
         }
 
-        // Sort transactions by timestamp (ascending)
+        // Sorting by timestamp (ascending)
         transactions.sort((a, b) => {
             const A = new Date(a.date).getTime();
             const B = new Date(b.date).getTime();
-
             if(A !== B){
                 return B - A;
             }
@@ -125,20 +116,14 @@ function start() {
 
         for (let i = 0; i < transactions.length; i++) {
             const transaction = transactions[i];
-
-            // Ensure the amount is a valid number before doing calculations
             if (isNaN(transaction.amount) || transaction.amount === null) {
                 console.error(`Invalid amount for transaction ${transaction.timestamp}:`, transaction.amount);
-                continue; // Skip invalid transactions
+                continue; // Skip invalid
             }
-
             if (transaction.type === "income") totalIncome += transaction.amount;
             if (transaction.type === "expense") totalExpense += transaction.amount;
-
-            // Call appendTransactionHistory function and append as a string to the innerHTML
             appendTransactionHistory(transaction);
         }
-
         updateTotals();
     }
 
@@ -155,7 +140,6 @@ function start() {
             `;
     }
 
-    // Add transaction
     addTransactionButton.addEventListener("click", function () {
         const type = document.getElementById("transaction-type").value;
         const amount = parseInt(document.getElementById("amount").value);
@@ -168,7 +152,7 @@ function start() {
         }
         
         let selectedAccount = null;
-        // Check account based on transaction type
+
         if (type === "expense") {
             selectedAccount = document.getElementById("expense-account").value;
         }
@@ -178,17 +162,14 @@ function start() {
         else if (type === "transfer") {
             const fromAccount = document.getElementById("transfer-fromAccount").value;
             const toAccount = document.getElementById("transfer-toAccount").value;
-
             if (!fromAccount || !toAccount) {
                 alert("Please select both 'From' and 'To' accounts for a transfer!");
                 return;
             }
-
             if (fromAccount === toAccount) {
                 alert("The 'From' and 'To' accounts cannot be the same!");
                 return;
             }
-
             selectedAccount = fromAccount; // Assign fromAccount to allow validation below
         }
 
@@ -210,7 +191,7 @@ function start() {
             const accounts = loadAccounts();
             const accountObj = accounts.find(acc => acc.name === account);
             if (accountObj) {
-                accountObj.balance -= amount; // Subtract the expense amount
+                accountObj.balance -= amount; //subtract here
                 localStorage.setItem('accounts', JSON.stringify(accounts));
             }
 
@@ -225,7 +206,7 @@ function start() {
             const accounts = loadAccounts();
             const accountObj = accounts.find(acc => acc.name === account);
             if (accountObj) {
-                accountObj.balance += amount; // Add the income amount
+                accountObj.balance += amount; //add heeree
                 localStorage.setItem('accounts', JSON.stringify(accounts));
             }
 
@@ -241,7 +222,6 @@ function start() {
             let fromAccountObj = null;
             let toAccountObj = null;
 
-            // Find fromAccount and toAccount object
             for (let i = 0; i < accounts.length; i++) {
                 if (accounts[i].name === fromAccount) {
                     fromAccountObj = accounts[i];
@@ -253,7 +233,6 @@ function start() {
             if (fromAccountObj && toAccountObj) {
                 fromAccountObj.balance -= amount;
                 toAccountObj.balance += amount;
-
                 localStorage.setItem('accounts', JSON.stringify(accounts));
             }
             else {
@@ -274,7 +253,6 @@ function start() {
         resetFields();
     });
 
-    // Update totals
     function updateTotals() {
         const netBalance = totalIncome - totalExpense;
         document.getElementById("total-income").textContent = `Total Income: $${totalIncome}`;
@@ -288,22 +266,16 @@ function start() {
 
     // Remove a single transaction
     window.removeTransaction = function (timestamp) {
-        // Loop through all items in localStorage
         for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i); // Get the key at the current index
-    
-            // If the key is equal to the timestamp (indicating it's the transaction we want to remove)
+            const key = localStorage.key(i);
             if (key === timestamp) {
-                localStorage.removeItem(key); // Remove the item
-                break; // Exit the loop after removing the transaction
+                localStorage.removeItem(key); 
+                break; 
             }
         }
-        
-        // Reload transaction history after removal
         loadTransactionHistory();
     };
-
-    // Capitalize helper
+    
     function capitalize(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }

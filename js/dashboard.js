@@ -64,7 +64,7 @@ function start() {
     }
     function loadTransactionHistory() {
         const transactionHistory = document.getElementById("transaction-history");
-        transactionHistory.innerHTML = ""; // Clear the existing list
+        transactionHistory.innerHTML = ""; //Clear history beforehand
         const transactions = [];
 
         for (let i = 0; i < localStorage.length; i++) {
@@ -75,14 +75,14 @@ function start() {
             }
         }
 
-        // Sort transactions by date and timestamp
+        //Sort by datee and timestamp
         transactions.sort((a, b) => {
             const dateA = new Date(a.date).getTime();
             const dateB = new Date(b.date).getTime();
             return dateB - dateA || b.timestamp - a.timestamp;
         });
 
-        // Populate transaction history
+        //Fillin transaction history
         transactions.forEach((transaction) => {
             transactionHistory.innerHTML += `
                 <li class="${transaction.type}">
