@@ -112,7 +112,6 @@ form button:hover {
     border: 1px solid rgb(200, 200, 200);
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
-    margin-top: 30px;
     padding: 10px;
 }
 
@@ -162,4 +161,18 @@ td {
 .main-table {
     width: 60%;
     margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #388e3c;
+}
+
+.download {
+    background-color: rgb(50, 200, 50);
 }
