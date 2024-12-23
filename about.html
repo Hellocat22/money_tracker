@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Tracker</title>
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="icon" href="money.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Logo Section -->
+    <div class="logo">
+        <img src="./image/money.png" alt="Money Tracker Logo">
+    </div>
+
+    <!-- Navigation Section -->
+    <nav class="navbar">
+        <ul>
+            <li id="dashboard-tab"><a href="index.html">Dashboard</a></li>
+            <li id="transaction-tab"><a href="transaction.html">Transactions</a></li>
+            <li id="account-tab"><a href="account.html">Accounts</a></li>
+            <li id="about-tab" class="active"><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <table class="main-table">
+            <tr>
+                <th colspan="2">
+                    <h2>About</h2>
+                </th>
+            </tr>
+
+            <!-- Account Section -->
+            <tr>
+                <td colspan="2">
+                    <!-- Account Form -->
+                    <form id="account-form">
+                        <table>
+                            <tr>
+                                <td colspan="1">
+                                    <div class="add-account">
+                                        <h3>許家豪</h3>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="add-account">
+                                        <h3>張欽平</h3>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <label for="account-category">Account Category:</label>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <label for="account-name">Name:</label>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <label for="account-balance">Account Balance:</label>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="form-action">
+                                    <button type="button" id="add-account">Add Account</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+
+            <!-- Account List -->
+            <tr>
+                <td colspan="1">
+                    <table id="account-list" class="account-list">
+                        <tr>
+                            <td>
+                                <div class="account-category-header">Cash</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul id="cash" class="cash"></ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="account-category-header">Bank Account</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul id="bank-account" class="bank-account"></ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="account-category-header">Credit</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul id="credit" class="credit"></ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="account-category-header">Savings</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul id="savings" class="savings"></ul>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </main>
+</body>
+</html>
