@@ -77,7 +77,6 @@ h3 {
 form {
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
 }
 
 form input,
@@ -90,7 +89,7 @@ form select {
     font-size: 16px;
 }
 
-form button {
+.form-table .account-form button {
     width: 100%;
     padding: 10px;
     background-color: rgb(50, 200, 50);
@@ -101,52 +100,45 @@ form button {
     cursor: pointer;
 }
 
-form button:hover {
+.form-table .account-form form button:hover {
     background-color: #45a049;
 }
 
 /* Account List */
-.account-list {
-    flex: 2;
-    text-align: left;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 10px;
+.account-list td{
     background-color: rgb(255, 255, 255);
-    padding: 10px;
 }
 
 .account-category-header {
     font-size: 18px;
     font-weight: bold;
     color: rgb(50, 200, 50);
-    margin-top: 20px;
+    padding: 20px;
 }
 
 .account-list ul {
     list-style-type: none;
+    list-style: none;
     padding: 0;
-    border: solid 1px;
-    border-color: rgb(200, 200, 200);
+    margin: 0;
     display: block;
 }
 
 .account-list li {
+    list-style-type: none;
+    list-style: none;
     padding: 10px;
-    background-color: rgb(245, 245, 245);
+    margin: 0;
     border-left: 10px solid rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
+    background-color: rgb(245, 245, 245);
 }
 
 /* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid rgb(200, 200, 200);
-    padding: 10px;
 }
 
 th {
@@ -161,6 +153,24 @@ td {
 .main-table {
     width: 60%;
     margin-top: 20px;
+}
+
+.table-label {
+    width: 300px;
+}
+
+.form-table {
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.account-form {
+    padding: 10px;
+}
+
+.account-form table {
+    border: none;
 }
 
 .input-account {
