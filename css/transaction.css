@@ -121,21 +121,16 @@ button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: rgb(255, 255, 255);
-}
-
-table, th, td {
-    border: 1px solid rgb(200, 200, 200);
-    padding: 10px;
 }
 
 th {
     background-color: rgb(50, 200, 50);
     color: white;
+    border: 1px solid rgb(50, 200, 50);
 }
 
 td {
-    text-align: center;
+    text-align: left;
 }
 
 .main-table {
