@@ -259,6 +259,14 @@ function start() {
         document.getElementById("total-expense").textContent = `Total Expense: $${totalExpense}`;
         document.getElementById("net-balance").textContent = `Net Balance: $${netBalance}`;
 
+        const netBalanceElement = document.getElementById("net-balance");
+        if (netBalance < 0) {
+            netBalanceElement.style.color = 'firebrick';  // Red for negative balance
+        }
+        else {
+            netBalanceElement.style.color = 'green';  // Green for positive balance
+        }
+
         localStorage.setItem("totalIncome", totalIncome);
         localStorage.setItem("totalExpense", totalExpense);
         localStorage.setItem("netBalance", netBalance);
