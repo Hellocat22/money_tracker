@@ -15,33 +15,31 @@ function start() {
             return;
         }
 
-        // Create an account object
+        // Create an account obj
         const account = {
             category,
             name,
             balance,
-            id: Date.now() // Unique ID based on timestamp
+            id: Date.now() 
         };
 
-        // Save the account in localStorage
+        // Save the acc in localStorage
         let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
         accounts.push(account);
         localStorage.setItem('accounts', JSON.stringify(accounts));
 
-        // Reset the input fields
+        // Emptying input fields
         accountName.value = '';
         accountBalance.value = '';
 
-        // Reload the account lists
+        // Reload  account lists
         loadAccounts();
     });
 
     // Load Accounts
     function loadAccounts() {
-        // Fetch all accounts from localStorage
         const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-
-        // Prepare HTML strings for each category
+        
         let cashHtml = '';
         let bankHtml = '';
         let creditHtml = '';
@@ -76,22 +74,19 @@ function start() {
             }
         }
 
-        // Update the HTML for each category
         document.getElementById('cash').innerHTML = cashHtml;
         document.getElementById('bank-account').innerHTML = bankHtml;
         document.getElementById('credit').innerHTML = creditHtml;
         document.getElementById('savings').innerHTML = savingsHtml;
     }
 
-    // Edit an account's balance
     window.editAccount = function (id) {
         let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
         
-        // Iterate over the accounts array
         for (let i = 0; i < accounts.length; i++) {
             const account = accounts[i];
             
-            // Check if the current account has the matching ID
+            // Check if the current account = matching ID ?
             if (account.id === id) {
                 const newBalance = prompt("Enter the new balance for " + account.name, account.balance);
                 const parsedBalance = parseInt(newBalance);
@@ -110,29 +105,21 @@ function start() {
         }
     };
 
-    // Remove an account
+    // Remove Acc
     window.removeAccount = function (id) {
         let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        
-        // Create a new array to store the accounts after removal
         let updatedAccounts = [];
     
-        // Loop through each account in the list
         for (let i = 0; i < accounts.length; i++) {
-            // If the account's ID doesn't match the one to remove, add it to the updated array
             if (accounts[i].id !== id) {
                 updatedAccounts.push(accounts[i]);
             }
         }
         
-        // Save the updated list of accounts back to localStorage
+        // Save the updated list to localStorage
         localStorage.setItem('accounts', JSON.stringify(updatedAccounts));
-        
-        // Reload the account list on the page
         loadAccounts();
     };
-
-    // Initial load
     loadAccounts();
 }
 
