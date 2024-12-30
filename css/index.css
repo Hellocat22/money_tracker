@@ -22,7 +22,7 @@ body {
     width: 50px;
 }
 
-/* Navbar Styling */
+/* Navbar */
 .navbar ul {
     list-style-type: none;
     background-color: rgb(50, 200, 50);
@@ -34,11 +34,13 @@ body {
 .navbar li {
     padding: 20px;
     cursor: pointer;
+    background-color: transparent;
     color: rgb(255, 255, 255);
 }
 
 .navbar li a {
     padding: 20px;
+    background-color: transparent;
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration: none;
@@ -61,7 +63,6 @@ body {
 /* Overview Section */
 .total, .history {
     padding: 20px;
-    border: 1px solid rgb(200, 200, 200);
     background-color: rgb(255, 255, 255);
 }
 
@@ -75,20 +76,27 @@ body {
 .total {
     flex: 1;
     font-size: large;
+    height: 200px;
+    border-bottom: 1px solid #ccc;
 }
 
 /* History Section */
-
 .history {
     flex: 2;
     text-align: left;
-    overflow-y: auto;
-    max-height: 400px;
+}
+
+.history-table {
+    border-left: 1px solid #ccc;
+    height: 500px;
+    width: 40%;
 }
 
 .history ul {
     list-style-type: none;
     padding: 0;
+    height: 500px;
+    overflow-y: auto;
 }
 
 .history li {
@@ -117,14 +125,10 @@ table {
     border-collapse: collapse;
 }
 
-table, th, td {
-    border: 1px solid rgb(200, 200, 200);
-    padding: 10px;
-}
-
 th {
     background-color: rgb(50, 200, 50);
     color: white;
+    border: 1px solid rgb(50, 200, 50);
 }
 
 td {
@@ -146,9 +150,46 @@ h3 {
 .main-table {
     width: 60%;
     margin-top: 20px;
+    background-color: #fff;
 }
 
 canvas {
     background-color: white;
-    border: 1px solid rgb(200, 200, 200);
+    display: none;
+    box-sizing: border-box;
+}
+
+.dashboard-table {
+    border: 1px solid #ccc;
+    height: 500px;
+}
+
+.chart-table {
+    width: 60%;
+    height: 60%;
+    padding: 20px;
+}
+
+.total-table {
+    width: 60%;
+    height: 40%;
+    vertical-align: top;
+}
+
+.total div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.overview-label {
+    border-bottom: 1px solid #ccc;
+}
+
+.recent-transaction-label {
+    border-bottom: 1px solid #ccc;
+}
+
+.history div {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

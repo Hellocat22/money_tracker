@@ -27,44 +27,48 @@
     <!-- Main Content -->
     <main class="main-content">
         <table class="main-table">
-            <tr>
-                <th colspan="2">
-                    <h2>Dashboard</h2>
-                </th>
-            </tr>
-
-            <!-- Overview -->
-            <tr>
-                <td>
-                    <div class="total">
-                        <h3>Overview</h3>
-                        <div id="total-income"></div>
-                        <div id="total-expense"></div>
-                        <div id="net-balance"></div>
-                    </div>
-                </td>
-
-                <!-- Transaction History -->
-                <td rowspan="2">
-                    <div id="history" class="history">
-                        <div>
-                            <h3>Recent Transaction History</h3>
+            <tbody class="dashboard-table">
+                <tr>
+                    <th colspan="2">
+                        <h2>Dashboard</h2>
+                    </th>
+                </tr>
+    
+                <!-- Overview -->
+                <tr>
+                    <td class="total-table">
+                        <div class="total">
+                            <div class="overview-label">
+                                <h3>Overview</h3>
+                            </div>
+                            <div id="total-income"></div>
+                            <div id="total-expense"></div>
+                            <div id="net-balance"></div>
                         </div>
-                        <ul id="transaction-history">
-                            <!-- Transaction history here~ -->
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-
-            <!-- Chart -->
-            <tr>
-                <td>
-                    <div id="chart-container">
-                        <canvas id="income-expenses-chart"></canvas>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+    
+                    <!-- Transaction History -->
+                    <td rowspan="2" class="history-table">
+                        <div id="history" class="history">
+                            <div class="recent-transaction-label">
+                                <h3>Recent Transaction History</h3>
+                            </div>
+                            <ul id="transaction-history">
+                                <!-- Transaction history here~ -->
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+    
+                <!-- Chart -->
+                <tr>
+                    <td class="chart-table">
+                        <div id="chart-container">
+                            <canvas id="income-expenses-chart"></canvas>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </main>
 
