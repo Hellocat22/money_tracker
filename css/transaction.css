@@ -66,19 +66,16 @@ h2 {
 }
 
 h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
     font-size: 18px;
     color: rgb(50, 200, 50);
+    margin: 0 0 10px;
 }
 
-/* Transaction Form */
+/* Form Styles */
 form {
     display: flex;
-    width: 100%;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(200, 200, 200);
+    padding: 20px;
 }
 
 form input,
@@ -86,45 +83,89 @@ form select {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
-    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
     font-size: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-form button {
-    width: 100%;
+button {
     padding: 10px;
     background-color: rgb(50, 200, 50);
     border: none;
-    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    color: #fff;
     font-size: 16px;
     cursor: pointer;
 }
 
-form button:hover {
+button:hover {
     background-color: #45a049;
+}
+
+.transaction-form table tr td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.add-transaction-button {
+    width: 100%;
+}
+
+.transaction-label {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: rgb(50, 200, 50);
+    color: white;
+}
+
+td {
+    text-align: left;
+}
+
+.main-table {
+    width: 60%;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.form-table {
+    border: 1px solid #ccc;
+}
+
+.expense-account-input {
+    padding-right: 10px;
 }
 
 /* Transaction History */
 .history {
     flex: 2;
     text-align: left;
-    overflow-y: auto;
-    height: 300px;
-    border: 1px solid rgb(200, 200, 200);
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     padding: 10px;
 }
 
 .history h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
+    padding: 10px 0;
     font-size: 18px;
     color: rgb(50, 200, 50);
+    border-bottom: 1px solid #ccc;
 }
 
 .history ul {
     list-style-type: none;
     padding: 0;
+    height: 500px;
+    overflow-y: auto;
 }
 
 .history li {
@@ -151,56 +192,30 @@ form button:hover {
 .total {
     flex: 1;
     padding: 10px;
-    height: 300px;
+    height: 500px;
     text-align: justify;
-    border: 1px solid rgb(200, 200, 200);
     font-size: large;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
+}
+
+.total h3 {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
 }
 
 .total-income,
 .total-expense,
 .net-balance {
-    margin-top: 10px;
+    padding: 10px 0;
 }
 
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, th, td {
-    padding: 10px;
-    border: 1px solid rgb(200, 200, 200);
-    box-sizing: border-box;
-}
-
-th {
-    background-color: rgb(50, 200, 50);
-    color: white;
-}
-
-td {
-    text-align: left;
-}
-
-.main-table {
+/* Layout Adjustments */
+.history-table {
     width: 60%;
-    margin-top: 20px;
+    border-right: 1px solid #ccc;
 }
 
-select {
-    width: 150px; /* Adjust this value as needed */
-    max-width: 100%; /* Prevent the select from exceeding its container */
-    overflow: hidden; /* Hide any overflow text */
-    text-overflow: ellipsis; /* Add ellipsis if the text is too long */
-    white-space: nowrap; /* Prevent wrapping of text inside the select */
-}
-
-.transaction-type, .input-colspan4 {
-    width: 100%;
-    max-width: 100%; /* Ensure it doesn't exceed the table cell's width */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
-    overflow: hidden; /* Hide overflow if text is too long */
+.total-table {
+    width: 40%;
+    vertical-align: top;
 }

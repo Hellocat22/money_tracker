@@ -34,9 +34,9 @@
             </tr>
 
             <!-- Transaction Form -->
-            <tr>
+            <tr class="form-table">
                 <td colspan="2">
-                    <form id="transaction-form">
+                    <form id="transaction-form" class="transaction-form">
                         <table>
                             <tr>
                                 <td colspan="6">
@@ -60,10 +60,10 @@
 
                             <!-- Expense Fields -->
                             <tr id="expense-account-field" style="display: none;">
-                                <td >
+                                <td>
                                     <label for="expense-account">Account:</label>
                                 </td>
-                                <td colspan="1">
+                                <td colspan="1" class="expense-account-input">
                                     <select id="expense-account">
                                         <!-- Accounts will be populated here -->
                                     </select>
@@ -71,13 +71,13 @@
                                 <td>
                                     <label for="expense-tag">Tag:</label>
                                 </td>
-                                <td colspan="1">
+                                <td colspan="1" class="expense-account-input">
                                     <input type="text" id="expense-tag" placeholder="Expense Tag">
                                 </td>
                                 <td>
                                     <label for="expense-notes">Notes:</label>
                                 </td>
-                                <td colspan="1">
+                                <td colspan="1" class="expense-account-input">
                                     <input type="text" id="expense-notes" placeholder="Notes">
                                 </td>
                             </tr>
@@ -150,15 +150,15 @@
                             </tr>
                             <tr>
                                 <td colspan="6" class="form-action" class="input-colspan4">
-                                    <button type="button" id="add-transaction">Add Transaction</button>
+                                    <button type="button" id="add-transaction" class="add-transaction-button">Add Transaction</button>
                                 </td>
                             </tr>
                         </table>
                     </form>
                 </td>
             </tr>
-            <tr>
-                <td>
+            <tr class="form-table">
+                <td class="history-table">
                     <!-- Transaction History -->
                     <div id="history" class="history">
                         <h3>Transaction History</h3>
@@ -167,7 +167,7 @@
                         </ul>
                     </div>
                 </td>
-                <td>
+                <td class="total-table">
                     <!-- Totals Section -->
                     <div id="total" class="total">
                         <h3>Transaction Overview</h3>
