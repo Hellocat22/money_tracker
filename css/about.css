@@ -142,6 +142,7 @@ form button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: rgb(255, 255, 255);
 }
 
 table, th, td {
@@ -161,6 +162,7 @@ td {
 .main-table {
     width: 60%;
     margin-top: 20px;
+    background-color: #fff;
 }
 
 a {
