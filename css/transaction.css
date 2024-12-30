@@ -126,6 +126,7 @@ table {
 th {
     background-color: rgb(50, 200, 50);
     color: white;
+    border: 1px solid rgb(50, 200, 50);
 }
 
 td {
@@ -193,7 +194,7 @@ td {
     flex: 1;
     padding: 10px;
     height: 500px;
-    text-align: justify;
+    text-align: left;
     font-size: large;
     background-color: #fff;
 }

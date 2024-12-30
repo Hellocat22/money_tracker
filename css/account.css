@@ -22,9 +22,9 @@ body {
     margin: 0 auto;
 }
 
-/* Navbar */
+/* Navbar Styling */
 .navbar ul {
-    list-style: none;
+    list-style-type: none;
     background-color: rgb(50, 200, 50);
     margin: 0;
     padding-left: 100px;
@@ -34,12 +34,12 @@ body {
 .navbar li {
     padding: 20px;
     cursor: pointer;
-    background-color: transparent;
-    color: #fff;
+    color: rgb(255, 255, 255);
 }
 
 .navbar li a {
-    color: #fff;
+    padding: 20px;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration: none;
 }
@@ -47,7 +47,6 @@ body {
 .navbar li:hover,
 .navbar li.active {
     background-color: #388e3c;
-    color: #fff;
 }
 
 /* Main Section */
@@ -149,6 +148,7 @@ table {
 th {
     background-color: rgb(50, 200, 50);
     color: white;
+    border: 1px solid rgb(50, 200, 50);
 }
 
 td {
