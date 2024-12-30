@@ -128,6 +128,8 @@ form select {
     list-style-type: none;
     list-style: none;
     padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin: 0;
     border-left: 10px solid rgb(0, 0, 0);
     display: flex;
@@ -166,7 +168,7 @@ td {
 }
 
 .account-form {
-    padding: 10px;
+    padding: 20px;
 }
 
 .account-form table {
