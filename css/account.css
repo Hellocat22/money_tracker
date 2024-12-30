@@ -24,7 +24,7 @@ body {
 
 /* Navbar */
 .navbar ul {
-    list-style-type: none;
+    list-style: none;
     background-color: rgb(50, 200, 50);
     margin: 0;
     padding-left: 100px;
@@ -32,16 +32,14 @@ body {
 }
 
 .navbar li {
-    padding: 20px 20px;
+    padding: 20px;
     cursor: pointer;
     background-color: transparent;
-    color: rgb(255, 255, 255);
+    color: #fff;
 }
 
 .navbar li a {
-    padding: 20px 20px;
-    background-color: transparent;
-    color: rgb(255, 255, 255);
+    color: #fff;
     font-weight: bold;
     text-decoration: none;
 }
@@ -49,7 +47,7 @@ body {
 .navbar li:hover,
 .navbar li.active {
     background-color: #388e3c;
-    color: rgb(255, 255, 255);
+    color: #fff;
 }
 
 /* Main Section */
@@ -67,13 +65,12 @@ h2 {
 }
 
 h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     font-size: 18px;
     color: rgb(50, 200, 50);
 }
 
-/* Account Form */
+/* Form Styles */
 form {
     display: flex;
     flex-direction: column;
@@ -85,58 +82,54 @@ form select {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
     font-size: 16px;
 }
 
-.form-table .account-form button {
-    width: 100%;
+.account-form table tr td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+button {
     padding: 10px;
     background-color: rgb(50, 200, 50);
     border: none;
     border-radius: 5px;
-    color: rgb(255, 255, 255);
+    color: #fff;
     font-size: 16px;
     cursor: pointer;
 }
 
-.form-table .account-form form button:hover {
+button:hover {
     background-color: #45a049;
 }
 
-/* Account List */
-.account-list td{
-    background-color: rgb(255, 255, 255);
+.add-account-button {
+    width: 100%;
 }
 
+/* Account List */
 .account-category-header {
     font-size: 18px;
     font-weight: bold;
     color: rgb(50, 200, 50);
     padding: 20px;
-    border-bottom: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid #ccc;
 }
 
 .account-list ul {
-    list-style-type: none;
     list-style: none;
     padding: 0;
     margin: 0;
-    display: block;
-    border-bottom: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid #ccc;
 }
 
 .account-list li {
-    list-style-type: none;
-    list-style: none;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 0;
+    padding: 10px 20px;
     border-left: 10px solid rgb(100, 100, 100);
+    background-color: rgb(245, 245, 245);
     display: flex;
     justify-content: space-between;
-    background-color: rgb(245, 245, 245);
 }
 
 /* Table Styling */
@@ -164,30 +157,19 @@ td {
 }
 
 .form-table {
-    border: none;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(200, 200, 200);
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
 
 .account-form {
     padding: 20px;
 }
 
-.account-form table {
-    border: none;
-}
-
-.account-form table tr td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-
 .input-account {
-    width: 100%; /* Adjust this value as needed */
-    max-width: 100%; /* Prevent the select from exceeding its container */
-    overflow: hidden; /* Hide any overflow text */
-    text-overflow: ellipsis; /* Add ellipsis if the text is too long */
-    white-space: nowrap; /* Prevent wrapping of text inside the select */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
 }
