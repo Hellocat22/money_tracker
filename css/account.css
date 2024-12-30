@@ -120,6 +120,9 @@ button:hover {
     font-size: 18px;
     font-weight: bold;
     color: rgb(50, 200, 50);
+}
+
+.account-list {
     padding: 20px;
 }
 
@@ -127,8 +130,7 @@ button:hover {
     list-style: none;
     padding: 0;
     margin: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-bottom: 20px;
 }
 
 .account-list li {

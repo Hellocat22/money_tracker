@@ -152,11 +152,12 @@ td {
     flex: 2;
     text-align: left;
     background-color: #fff;
-    padding: 10px;
+    padding: 20px;
 }
 
 .history h3 {
     padding: 10px 0;
+    margin: 0;
     font-size: 18px;
     color: rgb(50, 200, 50);
     border-bottom: 1px solid #ccc;
@@ -165,6 +166,7 @@ td {
 .history ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
     height: 500px;
     overflow-y: auto;
 }
@@ -192,7 +194,7 @@ td {
 /* Transaction Overview */
 .total {
     flex: 1;
-    padding: 10px;
+    padding: 20px;
     height: 500px;
     text-align: left;
     font-size: large;
