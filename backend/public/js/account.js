@@ -6,46 +6,48 @@ function start() {
 
     // Load Accounts
     function loadAccounts() {
-        const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        
-        let cashHtml = '';
-        let bankHtml = '';
-        let creditHtml = '';
-        let savingsHtml = '';
+        fetch('http://localhost:3000/account')
+            .then(response => response.json())
+            .then(accounts => {
+                let cashHtml = '';
+                let bankHtml = '';
+                let creditHtml = '';
+                let savingsHtml = '';
 
-        for (let i = 0; i < accounts.length; i++) {
-            const account = accounts[i];
-            const accountHtml = `
-                <li>
-                    <div>
-                    <strong>${account.name}</strong><br>
-                    Balance: $${account.balance}
-                    </div>
-                    <div class="button-container">
-                        <button onclick="editAccount(${account.id})">Edit</button>
-                        <button onclick="removeAccount(${account.id})">Remove</button>
-                    </div>
-                </li>
-            `;
+                accounts.forEach(account => {
+                    const accountHtml = `
+                        <li>
+                            <div>
+                                <strong>${account.name}</strong><br>
+                                Balance: $${account.balance}
+                            </div>
+                            <div class="button-container">
+                                <button onclick="editAccount(${account.id})">Edit</button>
+                                <button onclick="removeAccount(${account.id})">Remove</button>
+                            </div>
+                        </li>
+                    `;
 
-            if (account.category === 'Cash') {
-                cashHtml += accountHtml;
-            }
-            else if (account.category === 'Bank Account') {
-                bankHtml += accountHtml;
-            }
-            else if (account.category === 'Credit') {
-                creditHtml += accountHtml;
-            }
-            else if (account.category === 'Savings') {
-                savingsHtml += accountHtml;
-            }
-        }
+                    if (account.category === 'Cash') {
+                        cashHtml += accountHtml;
+                    }
+                    else if (account.category === 'Bank Account') {
+                        bankHtml += accountHtml;
+                    }
+                    else if (account.category === 'Credit') {
+                        creditHtml += accountHtml;
+                    }
+                    else if (account.category === 'Savings') {
+                        savingsHtml += accountHtml;
+                    }
+                });
 
-        document.getElementById('cash').innerHTML = cashHtml;
-        document.getElementById('bank-account').innerHTML = bankHtml;
-        document.getElementById('credit').innerHTML = creditHtml;
-        document.getElementById('savings').innerHTML = savingsHtml;
+                document.getElementById('cash').innerHTML = cashHtml;
+                document.getElementById('bank-account').innerHTML = bankHtml;
+                document.getElementById('credit').innerHTML = creditHtml;
+                document.getElementById('savings').innerHTML = savingsHtml;
+            })
+        .catch(error => console.error('Error fetching accounts:', error));
     }
 
     // Add Account
@@ -59,25 +61,21 @@ function start() {
             return;
         }
 
-        // Create an account obj
-        const account = {
-            category,
-            name,
-            balance,
-            id: Date.now() 
-        };
+        const account = { category, name, balance };
 
-        // Save the acc in localStorage
-        let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        accounts.push(account);
-        localStorage.setItem('accounts', JSON.stringify(accounts));
-
-        // Emptying input fields
-        accountName.value = '';
-        accountBalance.value = '';
-
-        // Reload  account lists
-        loadAccounts();
+        fetch('http://localhost:3000/account', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(account),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);  // Log success message
+                loadAccounts();  // Reload accounts
+            })
+            .catch(error => console.error('Error adding account:', error));
     });
 
     // Edit Accounts
