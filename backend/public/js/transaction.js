@@ -52,11 +52,12 @@ async function loadTransactionHistory() {
 }
 
 function appendTransactionHistory(transaction) {
+    const outDate = new Date(transaction.date).toISOString().split('T')[0];
     transactionHistory.innerHTML += `
             <li class="${transaction.type}">
                 <div>
                     <strong>${capitalize(transaction.type)}</strong>: $${transaction.amount}<br>
-                    Date: ${transaction.date}<br>
+                    Date: ${outDate}<br>
                     ${transaction.details}
                 </div>
                 <button onclick="removeTransaction('${transaction.timestamp}')">Remove</button>
@@ -78,19 +79,49 @@ async function addTransaction(type, amount, dateInput, details) {
             timestamp: new Date().getTime(),
         };
 
-        const response = await fetch('http://localhost:3000/transaction', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newTransaction),
-        });
+        // Handle the transfer scenario
+        if (type === 'transfer') {
+            const fromAccount = document.getElementById("transfer-fromAccount").value;
+            const toAccount = document.getElementById("transfer-toAccount").value;
 
-        const data = await response.json();
-        console.log(data.message);
+            // Create the transfer object for the source and destination accounts
+            const transferData = {
+                fromAccount,
+                toAccount,
+                amount,
+                date: newTransaction.date,
+                timestamp: newTransaction.timestamp,
+            };
+
+            // Send the transfer data to the server (you may need to adjust your backend to handle the transfer logic)
+            const response = await fetch('http://localhost:3000/transaction/transfer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(transferData),
+            });
+
+            const data = await response.json();
+            console.log(data.message);
+        } else {
+            // For income or expense, proceed with the normal transaction flow
+            const response = await fetch('http://localhost:3000/transaction', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newTransaction),
+            });
+
+            const data = await response.json();
+            console.log(data.message);
+        }
+
+        // Reload transactions and account data after adding the transaction
         loadTransactionHistory(); // Reload transactions after adding
+        loadAccountList(); // Reload account balances after the transfer
     } catch (error) {
         console.error('Error adding transaction:', error);
     }
 }
+
 
 function start() {
     const addTransactionButton = document.getElementById('add-transaction');

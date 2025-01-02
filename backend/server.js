@@ -113,6 +113,62 @@ app.delete('/transaction/:timestamp', (req, res) => {
     }
 });
 
+app.post('/transaction/transfer', (req, res) => {
+    const { fromAccount, toAccount, amount } = req.body;
+
+    // Find the source and destination accounts
+    const fromAccountData = accounts.find(acc => acc.name === fromAccount);
+    const toAccountData = accounts.find(acc => acc.name === toAccount);
+
+    if (!fromAccountData || !toAccountData) {
+        return res.status(404).json({ message: 'One or both accounts not found' });
+    }
+
+    // Make sure the source account has enough balance for the transfer
+    if (fromAccountData.balance < amount) {
+        return res.status(400).json({ message: 'Insufficient balance' });
+    }
+
+    // Update the balances of both accounts
+    fromAccountData.balance -= amount;
+    toAccountData.balance += amount;
+
+    // Log the transaction in the transaction history
+    const newTransaction = {
+        type: 'transfer',
+        amount,
+        date: new Date(),
+        details: `Transfer from ${fromAccount} to ${toAccount}`,
+        timestamp: new Date().getTime(),
+    };
+
+    transactions.push(newTransaction); // Store the transaction in memory
+
+    res.json({ message: 'Transfer successful', transaction: newTransaction });
+});
+
+//INDEX.JS
+app.get('/totals', (req, res) => {
+    let totalIncome = 0;
+    let totalExpense = 0;
+    let netBalance = 0;
+
+    accounts.forEach(account => {
+        totalIncome += account.balance;
+    });
+
+    transactions.forEach(transaction => {
+        if (transaction.type === 'expense') {
+            totalExpense += transaction.amount;
+        }
+    });
+
+    netBalance = totalIncome - totalExpense;
+
+    res.json({ totalIncome, totalExpense, netBalance });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
