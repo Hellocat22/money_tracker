@@ -7,6 +7,7 @@ const PORT = 3000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.static('public'));
 
 let accounts = [];
@@ -67,16 +68,49 @@ app.delete('/account/:id', (req, res) => {
     }
 });
 
-
+// TRANSACTION API 
 app.get('/transaction', (req, res) => {
     res.json(transactions);
 });
 
 app.post('/transaction', (req, res) => {
     const newTransaction = req.body;
-    newTransaction.id = Date.now(); // Add unique ID
     transactions.push(newTransaction);
-    res.json({ message: 'Transaction added successfully', transaction: newTransaction });
+
+    // Update account balances
+    const account = accounts.find(acc => acc.name === newTransaction.details.split(' || ')[0].split(': ')[1]);
+    if (account) {
+        if (newTransaction.type === 'income') {
+            account.balance += newTransaction.amount;
+        } else if (newTransaction.type === 'expense') {
+            account.balance -= newTransaction.amount;
+        }
+    }
+
+    res.status(201).json({ message: 'Transaction created', transaction: newTransaction });
+});
+
+app.delete('/transaction/:timestamp', (req, res) => {
+    const { timestamp } = req.params;
+    const transactionIndex = transactions.findIndex(t => t.timestamp === parseInt(timestamp));
+
+    if (transactionIndex !== -1) {
+        const removedTransaction = transactions.splice(transactionIndex, 1)[0];
+
+        // Update account balances
+        const account = accounts.find(acc => acc.name === removedTransaction.details.split(' || ')[0].split(': ')[1]);
+        if (account) {
+            if (removedTransaction.type === 'income') {
+                account.balance -= removedTransaction.amount;
+            } else if (removedTransaction.type === 'expense') {
+                account.balance += removedTransaction.amount;
+            }
+        }
+
+        res.json({ message: 'Transaction removed' });
+    } else {
+        res.status(404).json({ message: 'Transaction not found' });
+    }
 });
 
 app.listen(PORT, () => {
