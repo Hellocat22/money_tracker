@@ -4,38 +4,6 @@ function start() {
     const accountName = document.getElementById('account-name');
     const accountBalance = document.getElementById('account-balance');
 
-    // Add Account
-    addAccountButton.addEventListener('click', function () {
-        const category = accountCategory.value.trim(); // Remove unnecessary whitespaces
-        const name = accountName.value.trim();
-        const balance = parseInt(accountBalance.value.trim()) || 0;
-
-        if (!name) {
-            alert('Please enter a valid account name!');
-            return;
-        }
-
-        // Create an account obj
-        const account = {
-            category,
-            name,
-            balance,
-            id: Date.now() 
-        };
-
-        // Save the acc in localStorage
-        let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        accounts.push(account);
-        localStorage.setItem('accounts', JSON.stringify(accounts));
-
-        // Emptying input fields
-        accountName.value = '';
-        accountBalance.value = '';
-
-        // Reload  account lists
-        loadAccounts();
-    });
-
     // Load Accounts
     function loadAccounts() {
         const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
@@ -80,6 +48,39 @@ function start() {
         document.getElementById('savings').innerHTML = savingsHtml;
     }
 
+    // Add Account
+    addAccountButton.addEventListener('click', function () {
+        const category = accountCategory.value.trim(); // Remove unnecessary whitespaces
+        const name = accountName.value.trim();
+        const balance = parseInt(accountBalance.value.trim()) || 0;
+
+        if (!name) {
+            alert('Please enter a valid account name!');
+            return;
+        }
+
+        // Create an account obj
+        const account = {
+            category,
+            name,
+            balance,
+            id: Date.now() 
+        };
+
+        // Save the acc in localStorage
+        let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+        accounts.push(account);
+        localStorage.setItem('accounts', JSON.stringify(accounts));
+
+        // Emptying input fields
+        accountName.value = '';
+        accountBalance.value = '';
+
+        // Reload  account lists
+        loadAccounts();
+    });
+
+    // Edit Accounts
     window.editAccount = function (id) {
         let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
         
