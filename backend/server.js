@@ -13,8 +13,18 @@ let accounts = [];
 let transactions = [];
 
 // API Routes
-app.get('/account', (req, res) => {
+app.get('/account', (req, res) => { //normal
     res.json(accounts);
+});
+
+app.get('/account/:id', (req, res) => { //specific by id
+    const accountId = parseInt(req.params.id);
+    const account = accounts.find(acc => acc.id === accountId);
+    if (account) {
+        res.json(account);
+    } else {
+        res.status(404).json({ message: 'Account not found' });
+    }
 });
 
 app.post('/account', (req, res) => {
@@ -26,6 +36,10 @@ app.post('/account', (req, res) => {
 
 app.put('/account/:id', (req, res) => {
     const accountId = parseInt(req.params.id);
+
+    console.log(`Updating account with ID: ${accountId}`); //debuigoing
+    console.log(`Request Body:`, req.body);
+
     const updatedAccount = req.body;
     const index = accounts.findIndex(acc => acc.id === accountId);
     if (index !== -1) {
@@ -38,10 +52,21 @@ app.put('/account/:id', (req, res) => {
 });
 
 app.delete('/account/:id', (req, res) => {
-    const accountId = parseInt(req.params.id);
+    const accountId = parseInt(req.params.id, 10);
+    
+    console.log(`Deleting account with ID: ${accountId}`);
+    console.log(`Existing accounts:`, accounts);
+
+    const initialLength = accounts.length;
     accounts = accounts.filter(acc => acc.id !== accountId);
-    res.json({ message: 'Account deleted successfully' });
+
+    if (accounts.length < initialLength) {
+        res.json({ message: 'Account deleted successfully' });
+    } else {
+        res.status(404).json({ message: 'Account not found' });
+    }
 });
+
 
 app.get('/transaction', (req, res) => {
     res.json(transactions);

@@ -22,8 +22,8 @@ function start() {
                                 Balance: $${account.balance}
                             </div>
                             <div class="button-container">
-                                <button onclick="editAccount(${account.id})">Edit</button>
-                                <button onclick="removeAccount(${account.id})">Remove</button>
+                                <button onclick="editAccount(${account.id}, event)">Edit</button>
+                                <button onclick="removeAccount(${account.id}, event)">Remove</button>
                             </div>
                         </li>
                     `;
@@ -79,45 +79,55 @@ function start() {
     });
 
     // Edit Accounts
-    window.editAccount = function (id) {
-        let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        
-        for (let i = 0; i < accounts.length; i++) {
-            const account = accounts[i];
-            
-            // Check if the current account = matching ID ?
-            if (account.id === id) {
-                const newBalance = prompt("Enter the new balance for " + account.name, account.balance);
-                const parsedBalance = parseInt(newBalance);
-
-                if (!isNaN(parsedBalance) && parsedBalance >= 0) {
-                    account.balance = parsedBalance;
-                    localStorage.setItem('accounts', JSON.stringify(accounts));
-    
-                    loadAccounts();
-                }
-                else {
-                    alert("Please enter a valid balance.");
-                }
-                break;
-            }
+    window.editAccount = function (id, event) {
+        if (event) {
+            event.preventDefault();
         }
+        //console.log('Fetching account with ID:', id); //debug
+
+        fetch(`http://localhost:3000/account/${id}`)
+            .then(response => response.json())
+            .then(account => {
+                const newBalance = prompt(`Enter the new balance for ${account.name}`, account.balance);
+                const parsedBalance = parseInt(newBalance);
+    
+                if (!isNaN(parsedBalance) && parsedBalance >= 0) {
+                    const updatedAccount = { ...account, balance: parsedBalance };
+                    fetch(`http://localhost:3000/account/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(updatedAccount),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data.message);  // success consol
+                            loadAccounts();  
+                        })
+                        .catch(error => console.error('Error updating account:', error));
+                } else {
+                    alert('Please enter a valid balance.');
+                }
+            })
+            .catch(error => console.error('Error fetching account:', error));
     };
+    
 
     // Remove Acc
-    window.removeAccount = function (id) {
-        let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        let updatedAccounts = [];
-    
-        for (let i = 0; i < accounts.length; i++) {
-            if (accounts[i].id !== id) {
-                updatedAccounts.push(accounts[i]);
-            }
+    window.removeAccount = function (id, event) {
+        if (event) {
+            event.preventDefault();
         }
-        
-        // Save the updated list to localStorage
-        localStorage.setItem('accounts', JSON.stringify(updatedAccounts));
-        loadAccounts();
+        fetch(`http://localhost:3000/account/${id}`, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);  // Log success message
+                loadAccounts();  // Reload accounts
+            })
+            .catch(error => console.error('Error deleting account:', error));
     };
     loadAccounts();
 }
