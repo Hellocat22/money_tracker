@@ -1,0 +1,147 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    position: absolute;
+    top: -96px;
+    left: 10px;
+}
+
+.logo img {
+    display: block;
+    padding-top: 100px;
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+}
+
+/* Navbar */
+.navbar ul {
+    list-style-type: none;
+    background-color: rgb(50, 200, 50);
+    margin: 0;
+    padding-left: 100px;
+    display: flex;
+}
+
+.navbar li {
+    padding: 20px 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.navbar li a {
+    padding: 20px 20px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar li:hover,
+.navbar li.active {
+    background-color: #388e3c;
+    color: rgb(255, 255, 255);
+}
+
+/* Main Section */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h2 {
+    padding: 10px 100px;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgb(50, 200, 50);
+}
+
+/* Account Form */
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+}
+
+form input,
+form select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(50, 200, 50);
+    border: none;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(255, 255, 255);
+}
+
+table, th, td {
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+th {
+    background-color: rgb(50, 200, 50);
+    color: white;
+}
+
+td {
+    text-align: center;
+}
+
+.main-table {
+    width: 60%;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #388e3c;
+}
+
+.download {
+    background-color: rgb(50, 200, 50);
+}
