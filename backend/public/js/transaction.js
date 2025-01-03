@@ -4,7 +4,7 @@ const transactionHistory = document.getElementById('transaction-history');  // M
 
 async function removeTransaction(timestamp) {
     try {
-        const response = await fetch(`https://money-tracker-xq47.onrender.com/transaction/${timestamp}`, {
+        const response = await fetch(`http://localhost:3000/transaction/${timestamp}`, {
             method: 'DELETE',
         });
         const data = await response.json();
@@ -31,7 +31,7 @@ function updateTotals() {
 
 async function loadTransactionHistory() {
     try {
-        const response = await fetch('https://money-tracker-xq47.onrender.com/transaction');
+        const response = await fetch('http://localhost:3000/transaction');
         const transactions = await response.json();
 
         transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -94,7 +94,7 @@ async function addTransaction(type, amount, dateInput, details) {
             };
 
             // Send the transfer data to the server (you may need to adjust your backend to handle the transfer logic)
-            const response = await fetch('https://money-tracker-xq47.onrender.com/transaction/transfer', {
+            const response = await fetch('http://localhost:3000/transaction/transfer', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(transferData),
@@ -104,7 +104,7 @@ async function addTransaction(type, amount, dateInput, details) {
             console.log(data.message);
         } else {
             // For income or expense, proceed with the normal transaction flow
-            const response = await fetch('https://money-tracker-xq47.onrender.com/transaction', {
+            const response = await fetch('http://localhost:3000/transaction', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newTransaction),
@@ -152,7 +152,7 @@ function start() {
 
     async function loadAccounts() {
         try {
-            const response = await fetch('https://money-tracker-xq47.onrender.com/account');
+            const response = await fetch('http://localhost:3000/account');
             const text = await response.text();  // Read the raw response as text
             console.log('Raw Response:', text);  // Log the raw response
             const accounts = JSON.parse(text);  // Now parse the JSON manually

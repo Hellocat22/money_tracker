@@ -6,7 +6,7 @@ function start() {
 
     // Load Accounts
     function loadAccounts() {
-        fetch('https://money-tracker-xq47.onrender.com/account')
+        fetch('http://localhost:3000/account')
             .then(response => response.json())
             .then(accounts => {
                 let cashHtml = '';
@@ -63,7 +63,7 @@ function start() {
 
         const account = { category, name, balance };
 
-        fetch('https://money-tracker-xq47.onrender.com/account', {
+        fetch('http://localhost:3000/account', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ function start() {
         }
         //console.log('Fetching account with ID:', id); //debug
 
-        fetch(`https://money-tracker-xq47.onrender.com/account/${id}`)
+        fetch(`http://localhost:3000/account/${id}`)
             .then(response => response.json())
             .then(account => {
                 const newBalance = prompt(`Enter the new balance for ${account.name}`, account.balance);
@@ -93,7 +93,7 @@ function start() {
     
                 if (!isNaN(parsedBalance) && parsedBalance >= 0) {
                     const updatedAccount = { ...account, balance: parsedBalance };
-                    fetch(`https://money-tracker-xq47.onrender.com/account/${id}`, {
+                    fetch(`http://localhost:3000/account/${id}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ function start() {
         if (event) {
             event.preventDefault();
         }
-        fetch(`https://money-tracker-xq47.onrender.com/account/${id}`, {
+        fetch(`http://localhost:3000/account/${id}`, {
             method: 'DELETE',
         })
             .then(response => response.json())
