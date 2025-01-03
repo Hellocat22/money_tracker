@@ -1,7 +1,7 @@
 function start() {
     // Function to load totals (income, expense, net balance)
     function loadTotals() {
-        fetch('http://localhost:3000/account')  // Get account data
+        fetch('https://money-tracker-xq47.onrender.com/account')  // Get account data
             .then(response => response.json())
             .then(accounts => {
                 let totalIncome = 0;
@@ -14,7 +14,7 @@ function start() {
                 });
 
                 // Get transaction data to calculate total expenses
-                fetch('http://localhost:3000/transaction')
+                fetch('https://money-tracker-xq47.onrender.com/transaction')
                     .then(response => response.json())
                     .then(transactions => {
                         transactions.forEach(transaction => {
@@ -53,7 +53,7 @@ function start() {
         let incomeMonth = 0;
         let expenseMonth = 0;
 
-        fetch('http://localhost:3000/transaction')
+        fetch('https://money-tracker-xq47.onrender.com/transaction')
             .then(response => response.json())
             .then(transactions => {
                 transactions.forEach(transaction => {
@@ -100,7 +100,7 @@ function start() {
 
     // Function to load transaction history
     function loadTransactionHistory() {
-        fetch('http://localhost:3000/transaction')
+        fetch('https://money-tracker-xq47.onrender.com/transaction')
             .then(response => response.json())
             .then(transactions => {
                 const transactionHistory = document.getElementById("transaction-history");
